@@ -11,17 +11,17 @@ export class Player extends Actor {
 
     }
 
-    // onPreUpdate(engine) {
-    //     if (engine.mygamepad === null) {
-    //         console.log("error ahoele");
-    //         return;
-    //     }
-    //     const xValue = engine.mygamepad.getAxes(Axes.LeftStickX);
-    //     const yValue = engine.mygamepad.getAxes(Axes.LeftStickY);
-    //     this.vel = new Vector(xValue * 100, yValue * 100);
+    onPreUpdate(engine) {
+        if (engine.mygamepad === null) {
+            console.log("error ahoele");
+            return;
+        }
+        const xValue = engine.mygamepad.getAxes(Axes.LeftStickX);
+        const yValue = engine.mygamepad.getAxes(Axes.LeftStickY);
+        this.vel = new Vector(xValue * 100, yValue * 100);
 
-    //     if (engine.mygamepad.isButtonPressed(Buttons.Face1)) {
-    //         console.log("jump!");
-    //     }
-    // }
+        if (engine.mygamepad.isButtonPressed(Buttons.Face1)) {
+            console.log("jump!");
+        }
+    }
 }
