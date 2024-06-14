@@ -11,7 +11,7 @@ export class Player extends Actor {
 
     onPreUpdate(engine) {
         if (engine.mygamepad === null) {
-            console.log("error geen gamepad")
+            console.log("geeky geeky")
             return
         }
         const xValue = engine.mygamepad.getAxes(Axes.LeftStickX)
