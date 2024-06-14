@@ -3,7 +3,7 @@ import { Actor, CollisionType, Vector, Sprite, Axes, } from 'excalibur';
 
 export class Player extends Actor {
     constructor(x, y) {
-        super({x, y});
+        super(x, y);
         this.body.collisionType = CollisionType.Active;
         this.graphics.use(Resources.Seagull.toSprite())
         this.body.mass = 10;
