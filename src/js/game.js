@@ -1,60 +1,42 @@
 import '../css/style.css';
-import { Engine, Vector, DisplayMode, SolverStrategy } from "excalibur";
-import { Resources, ResourceLoader } from './resources.js';
-import { Player } from './player.js';
-import { Floor } from './floor.js';
-
-
-const options = {
-    displayMode: DisplayMode.Fill,
-    physics: {
-        solver: SolverStrategy.Realistic,
-        gravity: new Vector(0, 500),
-    }
-};
+import { Engine, Vector, DisplayMode, SolverStrategy, Scene } from 'excalibur';
+import { Resources, ResourceLoader } from './resources';
+import { Lobby } from './lobby';
+import { Level1 } from './level1';
+import { Level2 } from './level2';
+import { Level3 } from './level3';
+import { Level4 } from './level4';
 
 export class Game extends Engine {
-    mygamepad = null;
+    mygamepad
 
     constructor() {
-        super(options);
-        this.showDebug(true)
+        super();
+        this.showDebug(true);
         this.start(ResourceLoader).then(() => this.startGame());
     }
 
     startGame() {
+        const lobby = new Lobby(this);
+        this.addScene('lobby', lobby);
+        const level1 = new Level1();
+        this.addScene('level1', level1);
+
+
         this.input.gamepads.enabled = true;
         this.input.gamepads.on('connect', (connectEvent) => {
             console.log("Gamepad detected");
             this.mygamepad = connectEvent.gamepad;
         });
+        this.showlobby();
     }
 
-    onInitialize(engine) {
-        const player = new Player(400, 350);
-        this.add(player);
+    showlobby() {
+        this.goToScene('lobby');
+    }
 
-        const floor = new Floor(500, 650);
-        this.add(floor);
-
-
-        engine.input.gamepads.setMinimumGamepadConfiguration({
-            axis: 4,
-            buttons: 6,
-        });
-        engine.input.gamepads.enabled = true;
-
-        engine.input.gamepads.on('connect', (connectEvent) => {
-            console.log('Controllers connected');
-            this.gamepadConnected = true;
-        });
-
-        setTimeout(() => {
-            if (!this.gamepadConnected) {
-                console.log('No controllers connected!');
-            }
-        }, 2000);
-
+    showlevel1() {
+        this.goToScene('level1');
     }
 }
 

@@ -1,34 +1,56 @@
-import { Actor, Engine, Scene, Vector, Sprite } from 'excalibur';
+import { Actor, Scene, Vector, Sprite, Color } from 'excalibur';
 import { Resources } from './resources';
-import '../css/style.css';
-import { Player } from './player.js';
-import { ResourceLoader } from './resources.js';
-import { DisplayMode, SolverStrategy } from 'excalibur';
+
+const triggerPositions = [
+    { x: 100, y: 100, width: 200, height: 200, sceneKey: 'level1' },
+    { x: 500, y: 300, width: 150, height: 150, sceneKey: 'level2' },
+    { x: 800, y: 500, width: 180, height: 180, sceneKey: 'level3' },
+    { x: 300, y: 600, width: 220, height: 220, sceneKey: 'level4' },
+];
 
 export class Lobby extends Scene {
-    constructor() {
+    constructor(engine) {
         super();
+        this.engine = engine;
     }
 
     onInitialize(engine) {
         const lobbyTexture = Resources.LobbyBackground;
 
-        lobbyTexture.load().then(() => {
-            const lobbySprite = new Sprite({
-                image: lobbyTexture,
-                destSize: {
-                    width: 1440,
-                    height: 900,
+        const lobbySprite = new Sprite({
+            image: lobbyTexture,
+            destSize: {
+                width: engine.drawWidth,
+                height: engine.drawHeight,
+            }
+        });
+
+        const lobbyBackground = new Actor({
+            pos: new Vector(engine.drawWidth / 2, engine.drawHeight / 2),
+            anchor: new Vector(0.5, 0.5)
+        });
+
+        lobbyBackground.graphics.use(lobbySprite);
+        this.add(lobbyBackground);
+
+        triggerPositions.forEach((triggerPos) => {
+            const trigger = new Actor({
+                pos: new Vector(triggerPos.x, triggerPos.y),
+                width: triggerPos.width,
+                height: triggerPos.height,
+                color: Color.Red
+            });
+
+            this.add(trigger);
+
+            trigger.on('pointerup', () => {
+                console.log(`Clicked on ${triggerPos.sceneKey}`);
+                if (triggerPos.sceneKey === 'level1') {
+                    this.engine.showlevel1();
+                } else {
+                    this.engine.goToScene(triggerPos.sceneKey);
                 }
             });
-
-            const lobbyBackground = new Actor({
-                pos: new Vector(engine.drawWidth / 2, engine.drawHeight / 2),
-                anchor: new Vector(0.5, 0.5)
-            });
-
-            lobbyBackground.graphics.use(lobbySprite);
-            this.add(lobbyBackground);
         });
     }
 
@@ -40,54 +62,3 @@ export class Lobby extends Scene {
         console.log("Lobby scene is now inactive");
     }
 }
-
-const options = {
-    displayMode: DisplayMode.Fill,
-};
-
-const game = new Engine(options);
-
-const lobby = new Lobby();
-game.add('lobby', lobby);
-
-// Define the game class
-export class Game extends Engine {
-    mygamepad = null;
-
-    constructor() {
-        super(options);
-        this.start(ResourceLoader).then(() => this.startGame());
-    }
-
-    startGame() {
-        this.input.gamepads.enabled = true;
-        this.input.gamepads.on('connect', (connectEvent) => {
-            console.log("Gamepad detected");
-            this.mygamepad = connectEvent.gamepad;
-        });
-    }
-
-    onInitialize(engine) {
-        const player = new Player(500, 450);
-        this.add(player);
-
-        engine.input.gamepads.setMinimumGamepadConfiguration({
-            axis: 4,
-            buttons: 6,
-        });
-        engine.input.gamepads.enabled = true;
-
-        engine.input.gamepads.on('connect', (connectEvent) => {
-            console.log('Controllers connected');
-            this.gamepadConnected = true;
-        });
-
-        setTimeout(() => {
-            if (!this.gamepadConnected) {
-                console.log('No controllers connected!');
-            }
-        }, 2000);
-        this.goToScene('lobby');
-    }
-}
-new Game();
