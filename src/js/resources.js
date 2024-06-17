@@ -1,7 +1,8 @@
 import { ImageSource, Sound, Resource, Loader } from 'excalibur'
 
 const Resources = {
-    Seagull: new ImageSource('images/gull.png')
+    Seagull: new ImageSource('images/gull.png'),
+    Floor: new ImageSource('images/rock floor 2.png')
 }
 
 const ResourceLoader = new Loader()

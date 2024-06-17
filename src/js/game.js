@@ -2,12 +2,14 @@ import '../css/style.css';
 import { Engine, Vector, DisplayMode, SolverStrategy } from "excalibur";
 import { Resources, ResourceLoader } from './resources.js';
 import { Player } from './player.js';
+import { Floor } from './floor.js';
+
 
 const options = {
     displayMode: DisplayMode.Fill,
     physics: {
         solver: SolverStrategy.Realistic,
-        gravity: new Vector(0, 0),
+        gravity: new Vector(0, 500),
     }
 };
 
@@ -16,6 +18,7 @@ export class Game extends Engine {
 
     constructor() {
         super(options);
+        this.showDebug(true)
         this.start(ResourceLoader).then(() => this.startGame());
     }
 
@@ -28,8 +31,12 @@ export class Game extends Engine {
     }
 
     onInitialize(engine) {
-        const player = new Player(500, 450);
+        const player = new Player(400, 350);
         this.add(player);
+
+        const floor = new Floor(500, 650);
+        this.add(floor);
+
 
         engine.input.gamepads.setMinimumGamepadConfiguration({
             axis: 4,
@@ -47,6 +54,7 @@ export class Game extends Engine {
                 console.log('No controllers connected!');
             }
         }, 2000);
+
     }
 }
 
