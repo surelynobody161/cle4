@@ -43,18 +43,16 @@ export class Player extends Actor {
 
         // Check for Y-axis input with a delay
         const now = Date.now();
-        if (yAxis < -0.5 && now > this.lastInputTime + 400) { // 500ms delay
+        if (yAxis < -0.5 && now > this.lastInputTime + 400) {
             this.vel = new Vector(100, -200);
-            this.lastInputTime = now; // Update the last input time
+            this.lastInputTime = now;
         }
 
-        // Check for Face1 button input with a delay
         if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + 400) { // 500ms delay
             this.vel = new Vector(-100, -200);
-            this.lastInputTime = now; // Update the last input time
+            this.lastInputTime = now;
         }
 
-        // Reset the buttonPressed flag when buttons are released
         if (!gamepad.isButtonPressed(Input.Buttons.Face1) && yAxis >= -0.5) {
             this.buttonPressed = false;
         }
