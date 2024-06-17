@@ -4,7 +4,7 @@ import { Actor, CollisionType, Vector, Input, DegreeOfFreedom } from 'excalibur'
 
 export class Player extends Actor {
     constructor(x, y) {
-        super({ x, y, collisionType: CollisionType.Active, width: 70, height: 70 });
+        super({ x, y, collisionType: CollisionType.Active, width: 200, height: 200 });
         this.graphics.use(Resources.Seagull.toSprite());
         this.isGrounded = false;
         this.scale = new Vector(0.18, 0.18);
@@ -44,7 +44,8 @@ export class Player extends Actor {
         if (yAxis < -0.5 && !this.buttonPressed) {
             this.vel = new Vector(100, -200);
             this.buttonPressed = true;
-        }
+        } 
+        
 
         
         
