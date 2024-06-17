@@ -1,6 +1,6 @@
 import { Floor } from './floor';
 import { Resources } from './resources';
-import { Actor, CollisionType, Vector, Input, DegreeOfFreedom } from 'excalibur';
+import { Actor, CollisionType, Vector, Input, DegreeOfFreedom, SpriteSheet } from 'excalibur';
 
 export class Player extends Actor {
     constructor(x, y) {
@@ -13,6 +13,7 @@ export class Player extends Actor {
     }
 
     onInitialize(engine) {
+        this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
         this.on('collisionstart', (evt) => this.onCollisionStart(evt));
         this.z = 10;
     }
@@ -36,23 +37,29 @@ export class Player extends Actor {
             console.log("No gamepad connected");
             return;
         }
-        this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
 
         let gamepad = engine.mygamepad;
         let yAxis = gamepad.getAxes(Input.Axes.LeftStickY);
 
         // Check for Y-axis input with a delay
         const now = Date.now();
-        if (yAxis < -0.5 && now > this.lastInputTime + 400) {
-            this.vel = new Vector(100, -200);
-            this.lastInputTime = now;
+        if (yAxis < -0.5 && now > this.lastInputTime + 800) { // 500ms delay
+            this.vel = new Vector(100, -300);
+            this.lastInputTime = now; // Update the last input time
         }
 
-        if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + 400) { // 500ms delay
-            this.vel = new Vector(-100, -200);
-            this.lastInputTime = now;
+        if (yAxis < -0.5 && gamepad.isButtonPressed(Input.Buttons.Face1 && now > this.lastInputTime + 800)) { // 500ms delay
+            this.vel = new Vector(0, -300);
+            // this.lastInputTime = now; // Update the last input time
         }
 
+        // Check for Face1 button input with a delay
+        if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + 800) { // 500ms delay
+            this.vel = new Vector(-100, -300);
+            this.lastInputTime = now; // Update the last input time
+        }
+
+        // Reset the buttonPressed flag when buttons are released
         if (!gamepad.isButtonPressed(Input.Buttons.Face1) && yAxis >= -0.5) {
             this.buttonPressed = false;
         }

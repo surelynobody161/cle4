@@ -38,7 +38,7 @@ export class Lobby extends Scene {
                 pos: new Vector(triggerPos.x, triggerPos.y),
                 width: triggerPos.width,
                 height: triggerPos.height,
-                color: Color.Red
+                color: Color.fromRGB(1, 0, 0, 0.5)
             });
 
             this.add(trigger);

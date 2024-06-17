@@ -35,9 +35,9 @@ export class Game extends Engine {
         this.goToScene('lobby');
     }
 
-    showlevel1() {
-        this.goToScene('level1');
-    }
+    // showlevel1() {
+    //     this.goToScene('level1');
+    // }
 }
 
 new Game();
