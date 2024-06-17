@@ -1,25 +1,29 @@
 import { Resources } from './resources';
-import { Actor, CollisionType, Vector, Sprite, Axes, Input } from 'excalibur';
+import { Actor, CollisionType, Vector, Input } from 'excalibur';
 
 export class Player extends Actor {
     constructor(x, y) {
         super({ x, y });
         this.body.collisionType = CollisionType.Active;
-        this.graphics.use(Resources.Seagull.toSprite())
+        this.graphics.use(Resources.Seagull.toSprite());
         this.body.mass = 10;
         this.scale = new Vector(0.18, 0.18);
-
     }
 
     onPreUpdate(engine) {
-        if (engine.mygamepad === null) {
-            console.log("error ahoele");
+        if (!engine.mygamepad) {
+            console.log("No gamepad connected");
             return;
         }
-        let xAxis = engine.input.gamepads.at(0).getAxes(Input.Axes.LeftStickX);
-        let yAxis = engine.input.gamepads.at(0).getAxes(Input.Axes.LeftStickY);
-        //this.vel = new Vector(xValue * 100, yValue * 100);
-        console.log(xAxis)
-    }
+        let gamepad = engine.mygamepad;
+        let yAxis = gamepad.getAxes(Input.Axes.LeftStickY);
+        if (yAxis < -0.5) {
+            this.vel = new Vector(100, -200);
+        }
+        if (gamepad.isButtonPressed(Input.Buttons.Face1)) {
+            this.vel = new Vector(-100, -200);
+        }
 
+        console.log(`yAxis: ${yAxis}`);
+    }
 }

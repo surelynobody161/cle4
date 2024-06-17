@@ -1,6 +1,6 @@
-import '../css/style.css'
-import { Actor, Engine, Vector, DisplayMode, SolverStrategy, Buttons } from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
+import '../css/style.css';
+import { Engine, Vector, DisplayMode, SolverStrategy } from "excalibur";
+import { Resources, ResourceLoader } from './resources.js';
 import { Player } from './player.js';
 
 const options = {
@@ -10,25 +10,25 @@ const options = {
         gravity: new Vector(0, 0),
     }
 };
-export class Game extends Engine {
 
-    mygamepad
+export class Game extends Engine {
+    mygamepad = null;
 
     constructor() {
-        super(options)
-        this.start(ResourceLoader).then(() => this.startGame())
+        super(options);
+        this.start(ResourceLoader).then(() => this.startGame());
     }
 
     startGame() {
-        this.input.gamepads.enabled = true
-        this.input.gamepads.on('connect', (connectevent) => {
-            console.log("gamepad detected")
-            this.mygamepad = connectevent.gamepad
-        })
+        this.input.gamepads.enabled = true;
+        this.input.gamepads.on('connect', (connectEvent) => {
+            console.log("Gamepad detected");
+            this.mygamepad = connectEvent.gamepad;
+        });
     }
 
     onInitialize(engine) {
-        const player = new Player(500, 450)
+        const player = new Player(500, 450);
         this.add(player);
 
         engine.input.gamepads.setMinimumGamepadConfiguration({
@@ -38,18 +38,16 @@ export class Game extends Engine {
         engine.input.gamepads.enabled = true;
 
         engine.input.gamepads.on('connect', (connectEvent) => {
-            console.log('controllers connected')
+            console.log('Controllers connected');
             this.gamepadConnected = true;
         });
 
         setTimeout(() => {
             if (!this.gamepadConnected) {
-                console.log('no controllers connected!')
-
+                console.log('No controllers connected!');
             }
         }, 2000);
     }
-
 }
 
-new Game()
+new Game();
