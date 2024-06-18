@@ -41,25 +41,23 @@ export class Player extends Actor {
         let gamepad = engine.mygamepad;
         let yAxis = gamepad.getAxes(Input.Axes.LeftStickY);
 
-        // Check for Y-axis input with a delay
         const now = Date.now();
-        if (yAxis < -0.5 && now > this.lastInputTime + 800) { // 500ms delay
+        if (yAxis < -0.5 && now > this.lastInputTime + 800) { //800 miliseconde delay
             this.vel = new Vector(100, -300);
-            this.lastInputTime = now; // Update the last input time
+            this.lastInputTime = now; 
         }
 
-        if (yAxis < -0.5 && gamepad.isButtonPressed(Input.Buttons.Face1 && now > this.lastInputTime + 800)) { // 500ms delay
+        if (yAxis < -0.5 && gamepad.isButtonPressed(Input.Buttons.Face1 && now > this.lastInputTime + 800)) { //800 miliseconde delay
             this.vel = new Vector(0, -300);
-            // this.lastInputTime = now; // Update the last input time
+            // this.lastInputTime = now;
         }
 
         // Check for Face1 button input with a delay
-        if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + 800) { // 500ms delay
+        if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + 800) { //800 miliseconde delay
             this.vel = new Vector(-100, -300);
-            this.lastInputTime = now; // Update the last input time
+            this.lastInputTime = now; 
         }
 
-        // Reset the buttonPressed flag when buttons are released
         if (!gamepad.isButtonPressed(Input.Buttons.Face1) && yAxis >= -0.5) {
             this.buttonPressed = false;
         }
