@@ -22,7 +22,7 @@ export class Game extends Engine {
 
     constructor() {
         super(options);
-        
+
         this.showDebug(true);
         this.start(ResourceLoader).then(() => this.startGame());
     }
@@ -46,9 +46,9 @@ export class Game extends Engine {
     }
 
     showlevel1() {
-        const level1 = new Level1();
-        this.addScene('level1', level1);
-        this.goToScene('level1');
+        const cafe = new Level1();
+        this.addScene('cafe', cafe);
+        this.goToScene('cafe');
 
     }
 }

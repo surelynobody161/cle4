@@ -1,11 +1,11 @@
-import { Actor, Scene, Vector, Sprite, Color } from 'excalibur';
+import { Actor, Scene, Vector, Sprite, Color, Circle } from 'excalibur';
 import { Resources } from './resources';
 
 const triggerPositions = [
-    { x: 100, y: 100, width: 200, height: 200, sceneKey: 'level1' },
-    { x: 500, y: 300, width: 150, height: 150, sceneKey: 'level2' },
-    { x: 800, y: 500, width: 180, height: 180, sceneKey: 'level3' },
-    { x: 300, y: 600, width: 220, height: 220, sceneKey: 'level4' },
+    { x: 139, y: 695, radius: 28, sceneKey: 'cafe' },
+    { x: 1237, y: 633, radius: 28, sceneKey: 'haven' },
+    { x: 900, y: 780, radius: 28, sceneKey: 'voedbalveld' },
+    { x: 543, y: 664, radius: 28, sceneKey: 'appartement' },
 ];
 
 export class Lobby extends Scene {
@@ -36,16 +36,24 @@ export class Lobby extends Scene {
         triggerPositions.forEach((triggerPos) => {
             const trigger = new Actor({
                 pos: new Vector(triggerPos.x, triggerPos.y),
-                width: triggerPos.width,
-                height: triggerPos.height,
-                color: Color.fromRGB(1, 0, 0, 0.5)
+                radius: triggerPos.radius,
+                color: Color.Red
             });
+
+            const circleGraphic = new Circle({
+                radius: triggerPos.radius,
+                color: Color.Red,
+                strokeColor: Color.Transparent,
+                lineWidth: 0
+            });
+
+            trigger.graphics.use(circleGraphic);
 
             this.add(trigger);
 
             trigger.on('pointerup', () => {
                 console.log(`Clicked on ${triggerPos.sceneKey}`);
-                if (triggerPos.sceneKey === 'level1') {
+                if (triggerPos.sceneKey === 'cafe') {
                     this.engine.showlevel1();
                 } else {
                     this.engine.goToScene(triggerPos.sceneKey);
