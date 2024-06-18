@@ -7,11 +7,22 @@ import { Level2 } from './level2';
 import { Level3 } from './level3';
 import { Level4 } from './level4';
 
+const options = {
+    width: 1440, height: 900,
+    // displayMode: DisplayMode.FitScreen,
+    physics: {
+        solver: SolverStrategy.Realistic,
+        gravity: new Vector(0, 900),
+    }
+}
+
+
 export class Game extends Engine {
     mygamepad
 
     constructor() {
-        super();
+        super(options);
+        
         this.showDebug(true);
         this.start(ResourceLoader).then(() => this.startGame());
     }
