@@ -19,8 +19,7 @@ export class Game extends Engine {
     startGame() {
         const lobby = new Lobby(this);
         this.addScene('lobby', lobby);
-        const level1 = new Level1();
-        this.addScene('level1', level1);
+
 
 
         this.input.gamepads.enabled = true;
@@ -35,9 +34,12 @@ export class Game extends Engine {
         this.goToScene('lobby');
     }
 
-    // showlevel1() {
-    //     this.goToScene('level1');
-    // }
+    showlevel1() {
+        const level1 = new Level1();
+        this.addScene('level1', level1);
+        this.goToScene('level1');
+
+    }
 }
 
 new Game();
