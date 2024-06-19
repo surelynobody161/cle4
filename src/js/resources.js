@@ -4,6 +4,7 @@ const Resources = {
     Seagull: new ImageSource('images/gull.png'),
     Floor: new ImageSource('images/rock floor 2.png'),
     LobbyBackground: new ImageSource('images/schiecentralebeter.png'),
+    TestBackground: new ImageSource('images/testing.jpg')
 }
 
 const ResourceLoader = new Loader()
