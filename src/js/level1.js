@@ -1,4 +1,5 @@
-import { Scene } from 'excalibur';
+import { Scene, Sprite, Actor, Vector } from 'excalibur';
+import { Resources, ResourceLoader } from './resources';
 import { Player } from './player';
 import { Floor } from './floor';
 import { Ball } from './ball';
@@ -11,6 +12,25 @@ export class Level1 extends Scene {
     }
 
     onInitialize(engine) {
+        const lobbyTexture = Resources.TestBackground;
+
+        const lobbySprite = new Sprite({
+            image: lobbyTexture,
+            destSize: {
+                width: engine.drawWidth,
+                height: engine.drawHeight,
+            }
+        });
+
+        const lobbyBackground = new Actor({
+            pos: new Vector(engine.drawWidth / 2, engine.drawHeight / 2),
+            // anchor: new Vector(0.5, 0.5)
+        });
+
+        lobbyBackground.graphics.use(lobbySprite);
+        this.add(lobbyBackground);
+
+
         const player = new Player(600, 350);
         this.add(player);
 
@@ -27,5 +47,8 @@ export class Level1 extends Scene {
 
 
         console.log(engine, engine.mygamepad);
+
+        this.camera.zoom = 2;
+        this.camera.strategy.lockToActor(player);
     }
 }
