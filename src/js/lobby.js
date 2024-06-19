@@ -1,4 +1,4 @@
-import { Actor, Scene, Vector, Sprite, Color, Circle, Input } from 'excalibur';
+import { Actor, Scene, Vector, Sprite, Color, Circle, Input, Buttons } from 'excalibur';
 import { Resources } from './resources';
 
 const triggerPositions = [
@@ -14,8 +14,9 @@ export class Lobby extends Scene {
     constructor(engine) {
         super();
         this.engine = engine;
-        this.currentLocationIndex = 1; // Start at 'haven'
+        this.currentLocationIndex = 1;
         this.lastInputTime = 0;
+        this.isFace1Pressed = false; // Track if Face1 button is pressed
     }
 
     onInitialize(engine) {
@@ -65,7 +66,6 @@ export class Lobby extends Scene {
             });
         });
 
-        // Add the gull character
         this.gull = new Actor({
             pos: new Vector(triggerPositions[this.currentLocationIndex].x, triggerPositions[this.currentLocationIndex].y),
             anchor: new Vector(0.5, 0.5)
@@ -91,22 +91,47 @@ export class Lobby extends Scene {
 
         let gamepad = engine.mygamepad;
         let xAxis = gamepad.getAxes(Input.Axes.LeftStickX);
+        let yAxis = gamepad.getAxes(Input.Axes.LeftStickY); // Get Y-axis input
 
         const now = Date.now();
         const cooldown = 400; // Cooldown period in milliseconds
 
+        // Check if Face1 button is pressed and cooldown time has passed and button is not already pressed
+        if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + cooldown && !this.isFace1Pressed) {
+            // Perform action based on current location index
+            const currentLocation = triggerPositions[this.currentLocationIndex];
+            console.log(`Pressed Face1 at location ${currentLocation.sceneKey}`);
+
+            if (currentLocation.sceneKey === 'haven') {
+                this.engine.showlevel1();
+            } else {
+                this.engine.goToScene(currentLocation.sceneKey);
+            }
+
+            this.lastInputTime = now;
+            this.isFace1Pressed = true; // Set button pressed state
+        }
+
+        // Reset button states when buttons are released
+        if (!gamepad.isButtonPressed(Input.Buttons.Face1)) {
+            this.isFace1Pressed = false;
+        }
+
+        // Handle left stick movement to update current location index
         if (now > this.lastInputTime + cooldown) {
-            if (xAxis < -0.5) { // Left stick movement
+            if (xAxis < -0.5) { // Left stick left movement
                 this.currentLocationIndex = Math.min(this.currentLocationIndex + 1, locationsOrder.length - 1);
                 this.lastInputTime = now;
-            } else if (xAxis > 0.5) { // Right stick movement
+            } else if (xAxis > 0.5) { // Left stick right movement
                 this.currentLocationIndex = Math.max(this.currentLocationIndex - 1, 0);
                 this.lastInputTime = now;
             }
 
+            // Update gull position based on new location index
             const newLocation = triggerPositions.find(pos => pos.sceneKey === locationsOrder[this.currentLocationIndex]);
             if (newLocation) {
                 this.gull.pos = new Vector(newLocation.x, newLocation.y);
+                console.log(`Gull moved to ${newLocation.sceneKey}`);
             }
         }
     }
