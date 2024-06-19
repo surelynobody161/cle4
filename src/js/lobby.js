@@ -14,7 +14,7 @@ export class Lobby extends Scene {
     constructor(engine) {
         super();
         this.engine = engine;
-        this.currentLocationIndex = 1;
+        this.currentLocationIndex = 2;
         this.lastInputTime = 0;
         this.isFace1Pressed = false; // Track if Face1 button is pressed
     }
@@ -109,6 +109,16 @@ export class Lobby extends Scene {
             }
             if (currentLocation.sceneKey === 'appartement') {
                 this.engine.showlevel2();
+            } else {
+                this.engine.goToScene(currentLocation.sceneKey);
+            }
+            if (currentLocation.sceneKey === 'voedbalveld') {
+                this.engine.showlevel3();
+            } else {
+                this.engine.goToScene(currentLocation.sceneKey);
+            }
+            if (currentLocation.sceneKey === 'cafe') {
+                this.engine.showlevel4();
             } else {
                 this.engine.goToScene(currentLocation.sceneKey);
             }

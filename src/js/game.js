@@ -57,6 +57,18 @@ export class Game extends Engine {
         this.goToScene('cafe');
 
     }
+    showlevel3() {
+        const appartement = new Level3();
+        this.addScene('appartement', appartement);
+        this.goToScene('appartement');
+
+    }
+    showlevel4() {
+        const haven = new Level4();
+        this.addScene('haven', haven);
+        this.goToScene('haven');
+
+    }
 }
 
 new Game();
