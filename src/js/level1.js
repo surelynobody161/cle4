@@ -17,14 +17,12 @@ export class Level1 extends Scene {
         this.add(new Floor(500, 650));
         this.add(new Floor(200, 650));
 
-        // const ball = new Ball(100, 100);
         this.add(new Ball(110, 100));
-        // this.add(new Ball(500, 100));
 
-        const ramp = new Ramp(300, 450, 200, 20, Math.PI / -20); // Position, size, and angle of the ramp
+        const ramp = new Ramp(300, 450, 200, 20, Math.PI / -20);
         this.add(ramp);
 
-        const kid = new Kid(250, 400, 100, 100); // Position and size of the box
+        const kid = new Kid(250, 400, 100, 100);
         this.add(kid)
 
 
