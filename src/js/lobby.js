@@ -107,6 +107,11 @@ export class Lobby extends Scene {
             } else {
                 this.engine.goToScene(currentLocation.sceneKey);
             }
+            if (currentLocation.sceneKey === 'appartement') {
+                this.engine.showlevel2();
+            } else {
+                this.engine.goToScene(currentLocation.sceneKey);
+            }
 
             this.lastInputTime = now;
             this.isFace1Pressed = true; // Set button pressed state
