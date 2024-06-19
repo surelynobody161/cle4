@@ -46,9 +46,9 @@ export class Game extends Engine {
     }
 
     showlevel1() {
-        const cafe = new Level1();
-        this.addScene('cafe', cafe);
-        this.goToScene('cafe');
+        const voedbalveld = new Level1();
+        this.addScene('voedbalveld', voedbalveld);
+        this.goToScene('voedbalveld');
 
     }
 }
