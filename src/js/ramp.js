@@ -1,4 +1,4 @@
-import { Actor, CollisionType, Vector, Color } from 'excalibur';
+import { Actor, CollisionType, Vector, Color, Shape } from 'excalibur';
 
 export class Ramp extends Actor {
     constructor(x, y, width, height, angle) {
@@ -6,7 +6,6 @@ export class Ramp extends Actor {
             pos: new Vector(x, y),
             width: width,
             height: height,
-            color: Color.Gray,
             collisionType: CollisionType.Fixed
         });
         this.angle = angle;
@@ -15,5 +14,8 @@ export class Ramp extends Actor {
     onInitialize(engine) {
         // Set the rotation to the desired angle
         this.rotation = this.angle;
+
+        // Set up the collider with the given dimensions
+        this.collider.set(Shape.Box(this.width, this.height));
     }
 }
