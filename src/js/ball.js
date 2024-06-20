@@ -14,12 +14,13 @@ export class Ball extends Actor {
     }
 
     onInitialize(engine) {
-        this.on('collisionstart', (evt) => this.onCollisionStart(evt));
+        // this.on('collisionstart', (evt) => this.onCollisionStart(evt));
+        this.graphics.use(Resources.Ball.toSprite())
     }
 
-    onCollisionStart(evt) {
-        if (evt.other instanceof Kid) {
-            evt.other.pos = new Vector(600, 400);
-        }
-    }
+    // onCollisionStart(evt) {
+    //     if (evt.other instanceof Kid) {
+    //         evt.other.pos = new Vector(600, 400);
+    //     }
+    // }
 }
