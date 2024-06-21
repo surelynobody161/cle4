@@ -4,7 +4,7 @@ import { Player } from "./player.js";
 
 export class Fries extends Actor {
     constructor(x, y) {
-        super({ x, y, width: Resources.Fries.width, height: Resources.Fries.height });
+        super({x, y, width: Resources.Fries.width, height: Resources.Fries.height});
         this.scale = new Vector(0.1, 0.1)
         this.isPickedUp = false;
         this.z = 10

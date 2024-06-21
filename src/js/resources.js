@@ -8,7 +8,9 @@ const Resources = {
     TestBackground: new ImageSource('images/testing.jpg'),
     Footballfield: new TiledResource('images/football-bg (1).tmx'),
     Haven: new TiledResource('images/haven (1).tmx'),
-    Fries: new ImageSource('images/powerup.png')
+    Fries: new ImageSource('images/powerup.png'),
+    Ball: new ImageSource('images/ball.png'),
+    Kid: new ImageSource('images/Kid1Stand.png'),
 }
 
 const ResourceLoader = new Loader()

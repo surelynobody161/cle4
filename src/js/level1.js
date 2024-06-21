@@ -4,9 +4,9 @@ import { Player } from './player';
 import { Floor } from './floor';
 import { Ball } from './ball';
 import { Ramp } from './ramp';
-import { Kid } from './kid';
 import { Fries } from './fries';
 import { Wall } from './wall';
+import { Kid } from './kid';
 
 export class Level1 extends Scene {
     constructor() {
@@ -37,14 +37,11 @@ export class Level1 extends Scene {
 
 
 
-        const player = new Player(30, 100);
+        const player = new Player(30, 80);
         this.add(player);
 
-        // this.add(new Floor(500, 650));
-        // this.add(new Floor(200, 650));
 
         this.add(new Ball(48, 192));
-        this.add(new Fries(200, 100));
 
 
         const ramp = new Ramp(200, 200, 150, 10, Math.PI / -20);
@@ -53,8 +50,9 @@ export class Level1 extends Scene {
         this.add(new Wall(0, 150, 10, 300));
         this.add(new Wall(512, 0, 1024, 10));
 
-        // const kid = new Kid(250, 400, 100, 100);
-        // this.add(kid)
+        const kid = new Kid(300, 190, 0.5, 0.5);
+
+        this.add(kid)
 
 
         console.log(engine, engine.mygamepad);

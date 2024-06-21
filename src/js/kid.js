@@ -1,48 +1,34 @@
-import { Actor, CollisionType, Color, Vector, SpriteSheet } from 'excalibur';
+import { Actor, CollisionType, Color } from 'excalibur';
+import { Resources } from './resources.js';
 import { Ball } from './ball';
-import { Paper } from './paper'
 
 export class Kid extends Actor {
-    constructor(x, y, width, height) {
+    constructor(x, y) {
         super({
-            pos: new Vector(x, y),
-            width: width,
-            height: height,
-            color: Color.Green,
-            collisionType: CollisionType.passive
+            x, y, width: 10, height: 10,
+            collisionType: CollisionType.Passive,
+            
         });
-        this.originalColor = Color.Green;
     }
 
-    onIntialize() {
-        const spriteSheet = SpriteSheet.fromImageSource({
-            image: Resources.Kid,
-            grid: {
-                rows: 1,
-                columns: 6,
-                spriteWidth: 64,
-                spriteHeight: 64
-            }
-        })
-        this.pickup = Animation.fromSpriteSheet(spriteSheet, range(0, 3), 1000, AnimationStrategy.End)
-        this.idle = Animation.fromSpriteSheet(spriteSheet, range(0, 0), 100)
-        this.graphics.use(this.idle)
-        this.on('collisionstart', (event) => this.stoneOnPlate(event))
+    onInitialize(engine) {
+        this.graphics.use(Resources.Kid.toSprite());
+        this.on('collisionstart', (event) => this.ballstouch(event));
+        this.graphics.flipHorizontal = true;
+
     }
 
-    givePaper() {
-        // notification en +1 paper
+    givePaper(){
+        //give paper +1 and notification
     }
 
     ballstouch(event) {
         console.log(event.other);
         if (event.other instanceof Ball) {
-            console.log('Kid caught ball')
-            this.graphics.use(this.pickup);
-            event.other.givePaper();
+            console.log('Kid caught ball');
+            event.other.kill(); // Remove the ball from the game
         } else {
-            console.log('BALL!!!!')
+            console.log('Not a ball');
         }
     }
-
 }

@@ -5,6 +5,7 @@ import { Floor } from './floor';
 import { Ball } from './ball';
 import { Ramp } from './ramp';
 import { Kid } from './kid';
+import { Fries } from './fries';
 
 export class Level2 extends Scene {
     constructor() {
@@ -31,21 +32,13 @@ export class Level2 extends Scene {
         lobbyBackground.graphics.use(lobbySprite);
         this.add(lobbyBackground);
 
-
         const player = new Player(400, 350);
         this.add(player);
 
         this.add(new Floor(500, 650));
         this.add(new Floor(200, 650));
 
-        this.add(new Ball(110, 100));
-
-        const ramp = new Ramp(400, 450, 200, 20, Math.PI / -20);
-        this.add(ramp);
-
-        const kid = new Kid(250, 400, 100, 100);
-        this.add(kid)
-
+        this.add(new Fries(200, 100));
 
         console.log(engine, engine.mygamepad);
 

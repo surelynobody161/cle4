@@ -14,7 +14,6 @@ export class Player extends Actor {
         this.inventory = [];
         this.isFace1Pressed = false;
         this.jumpSpeed = -5000;
-
     }
 
     onInitialize(engine) {
