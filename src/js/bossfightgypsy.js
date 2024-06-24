@@ -1,6 +1,6 @@
 import { Actor, Vector, CollisionType, Animation, Shape, Timer, SpriteSheet, range } from "excalibur";
 import { Resources } from './resources.js';
-import { Poop } from "./bossfightpoop.js";
+import { BossFightPoop } from "./bossfightpoop.js";
 import { Projectile } from "./bossfightprojectile.js"; // Import the Projectile class
 import { Gull } from "./bossfightgull.js"; // Import the Gull class
 import { UITWO } from "./bossfighthealthbar.js";
@@ -41,7 +41,7 @@ export class Killer extends Actor {
         this.updateMovement();
 
         this.on('collisionstart', (event) => {
-            if (event.other instanceof Poop) {
+            if (event.other instanceof BossFightPoop) {
                 this.takeDamage(20);
                 event.other.kill(); // Remove the poop after collision
             }

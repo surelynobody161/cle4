@@ -1,7 +1,7 @@
 import { Actor, Vector, CollisionType, Animation, Shape, range, SpriteSheet } from "excalibur";
 import { Resources } from './resources.js';
 
-export class Poop extends Actor {
+export class BossFightPoop extends Actor {
     constructor() {
         super({
             collisionType: CollisionType.Passive,

@@ -1,6 +1,6 @@
 import { Actor, Vector, CollisionType, Shape, Input, BoundingBox, EventDispatcher, DegreeOfFreedom } from "excalibur";
 import { Resources } from './resources.js';
-import { Poop } from "./bossfightpoop.js";
+import { BossFightPoop } from "./bossfightpoop.js";
 import { Projectile } from "./bossfightprojectile.js";
 import { UI } from "./bossfighthealthbar.js";
 import { Wall } from "./wall.js";
@@ -128,7 +128,7 @@ export class Gull extends Actor {
         console.log(`yAxis: ${yAxis}`);
     }
     dropPoop(engine) {
-        const poop = new Poop();
+        const poop = new BossFightPoop();
         poop.pos = this.pos.clone(); // Start position of poop is the same as the Gull
         poop.vel = new Vector(0, 250); // Poop falls downwards
         engine.currentScene.add(poop);

@@ -1,4 +1,4 @@
-import { Actor, Vector, CollisionType } from 'excalibur';
+import { Actor, Vector, CollisionType, SpriteSheet, range, Animation } from 'excalibur';
 import { Resources } from './resources.js';
 
 export class Poop extends Actor {
@@ -9,7 +9,8 @@ export class Poop extends Actor {
             height: 10,
             collisionType: CollisionType.Passive
         });
-        const poop = SpriteSheet.fromImageSource({
+
+        const poopSpriteSheet = SpriteSheet.fromImageSource({
             image: Resources.Poop,
             grid: {
                 rows: 1,
@@ -19,7 +20,8 @@ export class Poop extends Actor {
             }
         });
 
-        this.runAnimation = Animation.fromSpriteSheet(poop, range(0, 1), 150);
+        // Use Animation.fromSpriteSheet with the correct arguments
+        this.runAnimation = Animation.fromSpriteSheet(poopSpriteSheet, range(0, 1), 150);
         this.graphics.use(this.runAnimation);
     }
 
