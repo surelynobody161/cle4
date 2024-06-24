@@ -4,6 +4,7 @@ import { Player } from './player';
 import { Floor } from './floor';
 import { Wall } from './wall';
 import { InvisibleCollider } from './invisibleCollider';
+import { ElevatorCollider } from './elevatorCollider';
 
 export class Level3 extends Scene {
     constructor() {
@@ -27,16 +28,16 @@ export class Level3 extends Scene {
         this.add(player);
 
         this.add(new Wall(5120, 0, 10240, 100));
-        this.add(new Wall(10240, 1500, 100, 3000));
+        this.add(new Wall(10200, 1500, 100, 3000));
         this.add(new Floor(0, 2560));
 
         this.add(new InvisibleCollider(0, 1500, 100, 3000));
-        this.add(new InvisibleCollider(9840, 800, 100, 300));
+        this.add(new ElevatorCollider(9840, 800, 100, 300));
 
         console.log(engine, engine.mygamepad);
 
         this.camera.zoom = 0.4;
         this.camera.strategy.lockToActor(player);
-        this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 10230, 2550)); // Set the game bounds
+        this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 10230, 2550));
     }
 }

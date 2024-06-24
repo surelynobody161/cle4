@@ -13,7 +13,7 @@ export class Paper extends ex.Actor {
 
     onInitialize(engine) {
         this.on('collisionstart', (event) => {
-            if (event.other instanceof ex.Actor) {
+            if (event.other instanceof Actor) {
                 this.collect(event.other);
             }
         });
@@ -25,7 +25,7 @@ export class Paper extends ex.Actor {
             console.log(`Paper collected ${this.collectionCount} time(s)`);
 
             if (this.collectionCount === 3) {
-                this.kill();
+                this.kill(); //TO DO trigger for end screen 
             }
         }
     }
