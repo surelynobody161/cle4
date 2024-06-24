@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from './resources';
 import { Player } from './player';
 import { Floor } from './floor';
 import { Wall } from './wall';
+import { Guard } from './gaurd';
 import { InvisibleCollider } from './invisibleCollider';
 import { ElevatorCollider } from './elevatorCollider';
 
@@ -26,6 +27,9 @@ export class Level3 extends Scene {
         const player = new Player(1000, 80);
         player.scale = new Vector(7, 7);
         this.add(player);
+
+        const gaurd = new Guard(9740, 655)
+        this.add(gaurd)
 
         this.add(new Wall(5120, 0, 10240, 100));
         this.add(new Wall(10200, 1500, 100, 3000));
