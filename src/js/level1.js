@@ -75,6 +75,48 @@ export class Level1 extends Scene {
         const boxDariela = new BoxC(4145, 1705, 90, 310);
         this.add(boxDariela);
 
+        const boxBlondy = new BoxC(4815, 1845, 90, 270);
+        this.add(boxBlondy);
+
+        const boxYae = new BoxC(5735, 1735, 90, 290);
+        this.add(boxYae);
+
+        const boxJaap = new BoxC(5875, 1705, 90, 330);
+        this.add(boxJaap);
+
+        const boxWhity = new BoxC(7060, 1745, 120, 370);
+        this.add(boxWhity);
+
+        const boxPurple = new BoxC(7150, 1780, 120, 360);
+        this.add(boxPurple);
+
+        const boxFernon = new BoxC(8120, 1735, 240, 290);
+        this.add(boxFernon);
+
+        const boxLampOne = new BoxC(3990, 1240, 100, 60);
+        this.add(boxLampOne);
+
+        const boxLampTwo = new BoxC(4580, 1240, 100, 60);
+        this.add(boxLampTwo);
+
+        const boxLampThree = new BoxC(5160, 1240, 100, 60);
+        this.add(boxLampThree);
+
+        const boxLampFour = new BoxC(5730, 1240, 100, 60);
+        this.add(boxLampFour);
+
+        const boxLampFive = new BoxC(6320, 1240, 100, 60);
+        this.add(boxLampFive);
+
+        const boxLampSix = new BoxC(6890, 1240, 100, 60);
+        this.add(boxLampSix);
+
+        const boxLampSeven = new BoxC(7470, 1240, 100, 60);
+        this.add(boxLampSeven);
+
+        const boxLampEight = new BoxC(8060, 1240, 100, 60);
+        this.add(boxLampEight);
+
         console.log(engine, engine.mygamepad);
 
         this.camera.zoom = 0.6;
