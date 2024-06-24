@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from './resources';
 import { Player } from './player';
 import { Floor } from './floor';
 import { Wall } from './wall';
+import { Guard } from './gaurd';
 import { InvisibleCollider } from './invisibleCollider';
 
 export class Level3 extends Scene {
@@ -26,12 +27,15 @@ export class Level3 extends Scene {
         player.scale = new Vector(7, 7);
         this.add(player);
 
+        const gaurd = new Guard(9740, 655)
+        this.add(gaurd)
+
         this.add(new Wall(5120, 0, 10240, 100));
         this.add(new Wall(10240, 1500, 100, 3000));
         this.add(new Floor(0, 2560));
 
         this.add(new InvisibleCollider(0, 1500, 100, 3000));
-        this.add(new InvisibleCollider(9840, 800, 100, 300));
+        this.add(new InvisibleCollider(9840, 655, 100, 300));
 
         console.log(engine, engine.mygamepad);
 

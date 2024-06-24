@@ -14,14 +14,15 @@ const Resources = {
     Cafe: new ImageSource('images/level2.png'),
     Turbinehal: new ImageSource('images/level3scene1.png'),
     Elevator: new ImageSource('images/level3scene2.png'),
-    
-    
+
+
     Floor: new ImageSource('images/rock floor 2.png'),
     LobbyBackground: new ImageSource('images/schiecentralebeter.png'),
     Fries: new ImageSource('images/powerup.png'),
     Ball: new ImageSource('images/ball.png'),
     Kid: new ImageSource('images/Kid1Stand.png'),
     KidBall: new ImageSource('images/Kid1.png'),
+    Gaurd: new ImageSource('images/Gaurd.png'),
 
     Poop: new ImageSource('images/Kid1.png')
 

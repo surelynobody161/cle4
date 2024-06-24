@@ -3,30 +3,29 @@ import { Resources, ResourceLoader } from "./resources";
 import { Poop } from "./poop";
 
 export class Guard extends Actor {
-    constructor() {
+    constructor(x, y) {
         super({
-            //hitbox fix, no art put yet
-            pos: new Vector(288, 64),
-            width: 64,
-            height: 32,
+            x, y, width: Resources.Gaurd.width, height: Resources.Gaurd.height,
             collisionType: CollisionType.Fixed
         })
+        this.scale = new Vector(1.2, 1.2);
     }
 
     onInitialize(engine) {
-        const spriteSheet = SpriteSheet.fromImageSource({
-            image: Resources.Guard,
-            grid: {
-                rows: 1,
-                columns: 2,
-                spriteWidth: 32,
-                spriteHeight: 32
-            }
-        })
-        //idk if there is going to be movement animation 
-        this.idle = Animation.fromSpriteSheet(spriteSheet, range(0, 0), 100)
-        this.moved = Animation.fromSpriteSheet(spriteSheet, range(1, 3), 100, AnimationStrategy.End)
-        this.graphics.use(this.idle)
+        // const spriteSheet = SpriteSheet.fromImageSource({
+        //     image: Resources.Guard,
+        //     grid: {
+        //         rows: 1,
+        //         columns: 2,
+        //         spriteWidth: 32,
+        //         spriteHeight: 32
+        //     }
+        // })
+        // //idk if there is going to be movement animation 
+        // this.idle = Animation.fromSpriteSheet(spriteSheet, range(0, 0), 100)
+        // this.moved = Animation.fromSpriteSheet(spriteSheet, range(1, 3), 100, AnimationStrategy.End)
+        // this.graphics.use(this.idle)
+        this.graphics.use(Resources.Gaurd.toSprite());
     }
 
     gaurdHit(event) {
