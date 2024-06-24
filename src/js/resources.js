@@ -22,9 +22,14 @@ const Resources = {
     Poop: new ImageSource('images/Kid1.png'),
     Gull: new ImageSource('images/gull.png'),
     Killer: new ImageSource('images/Kid1.png'),
-};
 
-const ResourceLoader = new Loader();
+    Poop: new ImageSource('images/Kid1.png'),
+
+    bgm1: new Sound('sounds/bill-evans.mp3') 
+
+}
+
+const ResourceLoader = new Loader()
 for (let res of Object.values(Resources)) {
     ResourceLoader.addResource(res);
 }
