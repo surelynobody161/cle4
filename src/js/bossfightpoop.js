@@ -21,8 +21,8 @@ export class Poop extends Actor {
             grid: {
                 rows: 1,
                 columns: 2,
-                spriteWidth: 53,
-                spriteHeight: 48
+                spriteWidth: 31,
+                spriteHeight: 42
             }
         });
         this.runAnimation = Animation.fromSpriteSheet(poop, range(0, 1), 100);
