@@ -93,6 +93,8 @@ export class Killer extends Actor {
             }
             console.log('Killer is defeated!');
         }
+        
+
     }
 
     shootAtGull(engine) {

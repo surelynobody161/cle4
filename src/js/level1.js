@@ -130,7 +130,7 @@ export class Level1 extends Scene {
 
 
 
-        const backgroundMusic = Resources.bgm1;
+        const backgroundMusic = Resources.TECHNO;
         backgroundMusic.loop = true;
         backgroundMusic.play(0.5);
 
