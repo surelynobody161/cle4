@@ -36,7 +36,7 @@ export class Level3 extends Scene {
         this.add(new Floor(0, 2560));
 
         this.add(new InvisibleCollider(0, 1500, 100, 3000));
-        this.add(new ElevatorCollider(9840, 800, 100, 300));
+        this.add(new ElevatorCollider(9840, 655, 100, 300));
 
         console.log(engine, engine.mygamepad);
 
