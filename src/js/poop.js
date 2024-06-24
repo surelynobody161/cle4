@@ -9,7 +9,18 @@ export class Poop extends Actor {
             height: 10,
             collisionType: CollisionType.Passive
         });
-        this.graphics.use(Resources.Poop.toSprite());
+        const poop = SpriteSheet.fromImageSource({
+            image: Resources.Poop,
+            grid: {
+                rows: 1,
+                columns: 2,
+                spriteWidth: 31,
+                spriteHeight: 42
+            }
+        });
+
+        this.runAnimation = Animation.fromSpriteSheet(poop, range(0, 1), 150);
+        this.graphics.use(this.runAnimation);
     }
 
     onInitialize(engine) {
