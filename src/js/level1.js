@@ -34,15 +34,15 @@ export class Level1 extends Scene {
         // this.add(lobbyBackground);
 
 
-        //plays the whole game
-        Resources.bgm1.play()
+
+
 
 
         const background = new Actor({
             x: 5120,
             y: 1280,
             anchor: new Vector(0.5, 0.5),
-            scale: new Vector(10, 10)
+            scale: new Vector(1, 1)
         });
 
         background.graphics.use(Resources.Footballfield.toSprite());
@@ -80,5 +80,12 @@ export class Level1 extends Scene {
         this.camera.zoom = 0.6;
         this.camera.strategy.lockToActor(player);
         this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 10240, 2560)); // Set the game bounds
+
+
+
+        const backgroundMusic = Resources.bgm1;
+        backgroundMusic.loop = true;
+        backgroundMusic.play(0.5);
+
     }
 }
