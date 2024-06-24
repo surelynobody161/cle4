@@ -26,7 +26,7 @@ export class Level2 extends Scene {
         localStorage.setItem(`inventory`, JSON.stringify([]));
 
         const player = new Player(30, 80);
-        player.scale = new Vector(7, 7);
+        // player.scale = new Vector(7, 7);
         this.add(player);
 
         this.add(new Wall(0, 1500, 10, 3000));

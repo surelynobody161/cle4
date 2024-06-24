@@ -52,7 +52,7 @@ export class Level1 extends Scene {
 
 
         const player = new Player(300, 800);
-        player.scale = new Vector(6, 6);
+        // player.scale = new Vector(6, 6);
         this.add(player);
 
 
