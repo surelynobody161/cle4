@@ -1,4 +1,4 @@
-import { Actor, Vector, CollisionType, Shape, Input, BoundingBox, EventDispatcher } from "excalibur";
+import { Actor, Vector, CollisionType, Shape, Input, BoundingBox, EventDispatcher, DegreeOfFreedom } from "excalibur";
 import { Resources } from './resources.js';
 import { Poop } from "./bossfightpoop.js";
 import { Projectile } from "./bossfightprojectile.js";
