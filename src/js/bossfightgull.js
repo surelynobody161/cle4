@@ -21,12 +21,15 @@ export class Gull extends Actor {
         this.buttonPressed = false;
         this.isFace1Pressed = false;
         this.lastInputTime = 0;
+        this.previousFace2Pressed = false; // Track the previous state of the Face2 button
 
         // Event dispatcher for emitting events
         this.eventDispatcher = new EventDispatcher();
     }
 
     onInitialize(engine) {
+        this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
+
         if (!engine.mygamepad) {
             console.log("No gamepad connected");
             return;
@@ -109,9 +112,12 @@ export class Gull extends Actor {
         }
 
         // Poop action with Face2 button
-        if (gamepad.isButtonPressed(Input.Buttons.Face2)) {
+        if (gamepad.isButtonPressed(Input.Buttons.Face2) && !this.previousFace2Pressed) {
             this.dropPoop(engine);
         }
+
+        // Update previousFace2Pressed state
+        this.previousFace2Pressed = gamepad.isButtonPressed(Input.Buttons.Face2);
 
         // Reset button states when buttons are released
         if (!gamepad.isButtonPressed(Input.Buttons.Face1) && yAxis >= -0.5) {
@@ -121,7 +127,6 @@ export class Gull extends Actor {
 
         console.log(`yAxis: ${yAxis}`);
     }
-
     dropPoop(engine) {
         const poop = new Poop();
         poop.pos = this.pos.clone(); // Start position of poop is the same as the Gull
