@@ -11,7 +11,7 @@ export class BossFightScene extends Scene {
     onInitialize(engine) {
         const background = new Actor({
             x: 512,
-            y: 130,
+            y: 300,
             anchor: new Vector(0.5, 0.5),
             scale: new Vector(0.5, 0.5)
         });

@@ -73,9 +73,9 @@ export class Gull extends Actor {
 
         // Configure the camera
         const player = this; // Assuming `player` is the current Gull instance
-        engine.currentScene.camera.zoom = 2;
+        engine.currentScene.camera.zoom = 1.2;
         engine.currentScene.camera.strategy.lockToActor(player);
-        engine.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(300, 0, 5120, 640)); // Set the game bounds
+        engine.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 5120, 640)); // Set the game bounds
     }
 
     movementSpeed(engine) {
