@@ -65,6 +65,7 @@ export class Level1 extends Scene {
         const kid = new Kid(3000, 1800, 5, 5);
         this.add(kid)
 
+
         const invisibleCollider = new InvisibleCollider(10240, 1500, 100, 3000);
         this.add(invisibleCollider);
 

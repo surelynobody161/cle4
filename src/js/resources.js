@@ -5,7 +5,7 @@ const Resources = {
     Seagull: new ImageSource('images/gull.png'),
     SeagullIdle: new ImageSource('images/seagullIdle (1).png'),
     LeftWing: new ImageSource('images/seagullFlap1.png'),
-    RightWing: new ImageSource('images/seagullFlap1.png'),
+    RightWing: new ImageSource('images/seagullFlap2.png'),
     BothWings: new ImageSource('images/seagullFlapBoth.png'),
 
     Footballfield: new ImageSource('images/level1.png'),
@@ -21,7 +21,10 @@ const Resources = {
     Fries: new ImageSource('images/powerup.png'),
     Ball: new ImageSource('images/ball.png'),
     Kid: new ImageSource('images/Kid1Stand.png'),
-    KidBall: new ImageSource('images/Kid1.png')
+    KidBall: new ImageSource('images/Kid1.png'),
+
+    Poop: new ImageSource('images/Kid1.png')
+
 }
 
 const ResourceLoader = new Loader()

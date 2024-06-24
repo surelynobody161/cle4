@@ -1,6 +1,7 @@
 import { Actor, CollisionType, Color, Vector } from 'excalibur';
 import { Resources } from './resources.js';
 import { Ball } from './ball';
+import { Paper } from './paper.js';
 
 export class Kid extends Actor {
     constructor(x, y) {
@@ -29,6 +30,7 @@ export class Kid extends Actor {
             event.other.kill(); // Remove the ball from the game
             this.graphics.use(Resources.KidBall.toSprite());
             this.graphics.flipHorizontal = false;
+
 
         } else {
             console.log('Not a ball');

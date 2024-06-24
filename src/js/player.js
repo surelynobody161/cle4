@@ -1,5 +1,6 @@
 import { Floor } from './floor';
 import { Fries } from './fries';
+import { Poop } from './poop';
 import { Resources } from './resources';
 import { Actor, CollisionType, Vector, Input, DegreeOfFreedom, CompositeCollider, Shape, SpriteSheet, Animation, range } from 'excalibur';
 
@@ -15,6 +16,8 @@ export class Player extends Actor {
         this.currentAnimation = 'idle';
         this.inventory = [];
         this.jumpSpeed = -5000;
+        this.canPoop = false;
+
     }
 
     onInitialize(engine) {
@@ -65,7 +68,7 @@ export class Player extends Actor {
         });
         const idle = Animation.fromSpriteSheet(idleSpritesheet, range(0, 1), 300)
         const leftWing = Animation.fromSpriteSheet(leftWingSpritesheet, range(0, 1), 150)
-        const rightWing = Animation.fromSpriteSheet(rightWingSpritesheet, range(1, 5), 20)
+        const rightWing = Animation.fromSpriteSheet(rightWingSpritesheet, range(0,1), 150)
         const bothWings = Animation.fromSpriteSheet(bothWingsSpritesheet, range(0, 1), 150)
 
 
@@ -77,12 +80,26 @@ export class Player extends Actor {
         this.graphics.use(idle);
     }
 
+    enablePooping() {
+        this.canPoop = true;
+    }
+
+    poop() {
+        if (this.canPoop) {
+            const projectile = new Poop(this.pos.x, this.pos.y);
+            this.scene.add(projectile);
+            this.canPoop = false; // Can only poop once
+        }
+    }
+
+
     setAnimation(animationName) {
         if (this.currentAnimation !== animationName) {
             this.graphics.use(animationName);
             this.currentAnimation = animationName;
         }
     }
+    
 
     onCollisionStart(evt) {
         if (!evt.other) {
@@ -101,6 +118,7 @@ export class Player extends Actor {
             evt.other.pickUp(this);
             console.log("POOP CHARGE")
             this.jumpSpeed = -7000;
+            this.enablePooping(); // Enable pooping when fries are picked up
             // this.scene.engine.clock.schedule(() => (
             //     this.jumpSpeed = -5000
             // ), 5000);
@@ -113,7 +131,6 @@ export class Player extends Actor {
             return;
         }
 
-        // this.graphics.use("idle");
 
         let gamepad = engine.mygamepad;
         let yAxis = gamepad.getAxes(Input.Axes.LeftStickY);
@@ -128,7 +145,6 @@ export class Player extends Actor {
             this.vel = new Vector(600, -700);
             this.lastInputTime = now;
             this.buttonPressed = true;
-            this.graphics.flipHorizontal = false;
 
         }
 
@@ -139,7 +155,6 @@ export class Player extends Actor {
             this.vel = new Vector(0, -700);
             this.lastInputTime = now;
             this.buttonPressed = true;
-            this.graphics.flipHorizontal = false;
 
         }
 
@@ -150,7 +165,11 @@ export class Player extends Actor {
             this.vel = new Vector(-600, -700);
             this.lastInputTime = now;
             this.isFace1Pressed = true;
-            this.graphics.flipHorizontal = true;
+        }
+
+        // Poop action with Face2 button
+        if (gamepad.isButtonPressed(Input.Buttons.Face2) && this.canPoop) {
+            this.poop();
         }
 
         // Reset button states when buttons are released
