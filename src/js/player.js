@@ -2,12 +2,12 @@ import { Floor } from './floor';
 import { Fries } from './fries';
 import { Poop } from './poop';
 import { Resources } from './resources';
-import { Actor, CollisionType, Vector, Input, DegreeOfFreedom, CompositeCollider, Shape, SpriteSheet, Animation, range } from 'excalibur';
+import { Actor, CollisionType, Vector, Input, DegreeOfFreedom, CompositeCollider, Shape, SpriteSheet, Animation, AnimationStrategy, range } from 'excalibur';
 
 export class Player extends Actor {
     constructor(x, y) {
-        super({ 
-            x, y, collisionType: CollisionType.Active 
+        super({
+            x, y, collisionType: CollisionType.Active
         });
         this.graphics.use(Resources.SeagullIdle.toSprite());
         this.isGrounded = false;
@@ -69,7 +69,7 @@ export class Player extends Actor {
         });
         const idle = Animation.fromSpriteSheet(idleSpritesheet, range(0, 1), 300)
         const leftWing = Animation.fromSpriteSheet(leftWingSpritesheet, range(0, 1), 150)
-        const rightWing = Animation.fromSpriteSheet(rightWingSpritesheet, range(0,1), 150)
+        const rightWing = Animation.fromSpriteSheet(rightWingSpritesheet, range(0, 1), 150)
         const bothWings = Animation.fromSpriteSheet(bothWingsSpritesheet, range(0, 1), 150)
 
 
@@ -100,7 +100,7 @@ export class Player extends Actor {
             this.currentAnimation = animationName;
         }
     }
-    
+
 
     onCollisionStart(evt) {
         if (!evt.other) {
@@ -139,15 +139,17 @@ export class Player extends Actor {
         const now = Date.now();
         const cooldown = 700;
 
+
+
         //right
         if (yAxis < -0.5 && now > this.lastInputTime + cooldown && !this.buttonPressed) {
-            this.setAnimation('leftwing'); // Keep the animation as idle for this action
-            // this.vel = new Vector(100, -300);
+            this.setAnimation('leftwing'); // Set the animation to leftwing
             this.vel = new Vector(600, -700);
             this.lastInputTime = now;
-            this.buttonPressed = true;
-
+            this.buttonPressed = true; // Set the buttonPressed flag to true
         }
+
+
 
         //up
         if (yAxis < -0.5 && gamepad.isButtonPressed(Input.Buttons.Face1) && !this.buttonPressed) {
@@ -166,6 +168,15 @@ export class Player extends Actor {
             this.vel = new Vector(-600, -700);
             this.lastInputTime = now;
             this.isFace1Pressed = true;
+        }
+
+        // To reset the buttonPressed flag
+        if (yAxis >= -0.5 && !this.isFace1Pressed) {
+            this.buttonPressed = false;
+            this.isFace1Pressed = false;
+
+            this.setAnimation('idle');
+
         }
 
         // Poop action with Face2 button
