@@ -8,7 +8,11 @@ const Resources = {
     BothWings: new ImageSource('images/seagullFlapBoth.png'),
     Footballfield: new ImageSource('images/level1.png'),
     Haven: new ImageSource('images/level4.png'),
+    
     Cafe: new ImageSource('images/level2.png'),
+    Tv: new ImageSource('images/tv.png'),
+
+
     Turbinehal: new ImageSource('images/level3scene1.png'),
     Elevator: new ImageSource('images/level3scene2.png'),
     HavenBlank: new ImageSource('images/level4blank.png'),
@@ -26,6 +30,7 @@ const Resources = {
     Poop: new ImageSource('images/Kid1.png'),
 
     bgm1: new Sound('sounds/bill-evans.mp3') 
+
 
 }
 
