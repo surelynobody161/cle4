@@ -1,11 +1,9 @@
-import { Scene, Sprite, Actor, Vector } from 'excalibur';
+import { Scene, Sprite, Actor, Vector, BoundingBox } from 'excalibur';
 import { Resources, ResourceLoader } from './resources';
 import { Player } from './player';
 import { Floor } from './floor';
-import { Ball } from './ball';
-import { Ramp } from './ramp';
-import { Kid } from './kid';
-import { Fries } from './fries';
+import { Wall } from './wall';
+import { InvisibleCollider } from './invisibleCollider';
 
 export class Level3 extends Scene {
     constructor() {
@@ -13,50 +11,32 @@ export class Level3 extends Scene {
     }
 
     onInitialize(engine) {
-        console.log("level 3")
-        // const lobbyTexture = Resources.TestBackground;
+        const background = new Actor({
+            x: 5120,
+            y: 1280,
+            anchor: new Vector(0.5, 0.5)
+        });
 
-        // const lobbySprite = new Sprite({
-        //     image: lobbyTexture,
-        //     destSize: {
-        //         width: engine.drawWidth,
-        //         height: engine.drawHeight,
-        //     }
-        // });
+        background.graphics.use(Resources.Turbinehal.toSprite());
+        this.add(background);
 
-        // const lobbyBackground = new Actor({
-        //     pos: new Vector(engine.drawWidth / 2, engine.drawHeight / 2),
-        //     // anchor: new Vector(0.5, 0.5)
-        // });
-
-        // lobbyBackground.graphics.use(lobbySprite);
-        // this.add(lobbyBackground);
-
-        Resources.Footballfield.addToScene(this)
         localStorage.setItem(`inventory`, JSON.stringify([]));
 
-
-
-        const player = new Player(134, 100);
+        const player = new Player(1000, 80);
+        player.scale = new Vector(7, 7);
         this.add(player);
 
-        // this.add(new Floor(500, 650));
-        // this.add(new Floor(200, 650));
+        this.add(new Wall(5120, 0, 10240, 100));
+        this.add(new Wall(10240, 1500, 100, 3000));
+        this.add(new Floor(0, 2560));
 
-        this.add(new Ball(48, 192));
-        this.add(new Fries(200, 100));
-
-
-        // const ramp = new Ramp(300, 450, 200, 20, Math.PI / -20);
-        // this.add(ramp);
-
-        // const kid = new Kid(250, 400, 100, 100);
-        // this.add(kid)
-
+        this.add(new InvisibleCollider(0, 1500, 100, 3000));
+        this.add(new InvisibleCollider(9840, 800, 100, 300));
 
         console.log(engine, engine.mygamepad);
 
-        this.camera.zoom = 5;
+        this.camera.zoom = 0.4;
         this.camera.strategy.lockToActor(player);
+        this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 10230, 2550)); // Set the game bounds
     }
 }

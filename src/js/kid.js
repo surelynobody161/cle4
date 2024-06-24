@@ -5,7 +5,7 @@ import { Ball } from './ball';
 export class Kid extends Actor {
     constructor(x, y) {
         super({
-            x, y, width: 10, height: 10,
+            x, y, width: 10, height: 20,
             collisionType: CollisionType.Passive,
             
         });
@@ -15,7 +15,6 @@ export class Kid extends Actor {
         this.graphics.use(Resources.Kid.toSprite());
         this.on('collisionstart', (event) => this.ballstouch(event));
         this.graphics.flipHorizontal = true;
-
     }
 
     givePaper(){
@@ -27,6 +26,9 @@ export class Kid extends Actor {
         if (event.other instanceof Ball) {
             console.log('Kid caught ball');
             event.other.kill(); // Remove the ball from the game
+            this.graphics.use(Resources.KidBall.toSprite());
+            this.graphics.flipHorizontal = false;
+
         } else {
             console.log('Not a ball');
         }

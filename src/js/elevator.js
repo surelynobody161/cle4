@@ -9,31 +9,13 @@ import { Wall } from './wall';
 import { Kid } from './kid';
 import { InvisibleCollider } from './invisibleCollider';
 
-export class Level1 extends Scene {
+export class Elevator extends Scene {
     constructor() {
         super();
     }
 
     onInitialize(engine) {
-        // const lobbyTexture = Resources.TestBackground;
-
-        // const lobbySprite = new Sprite({
-        //     image: lobbyTexture,
-        //     destSize: {
-        //         width: engine.drawWidth,
-        //         height: engine.drawHeight,
-        //     }
-        // });
-
-        // const lobbyBackground = new Actor({
-        //     pos: new Vector(engine.drawWidth / 2, engine.drawHeight / 2),
-        //     // anchor: new Vector(0.5, 0.5)
-        // });
-
-        // lobbyBackground.graphics.use(lobbySprite);
-        // this.add(lobbyBackground);
-
-        Resources.Footballfield.addToScene(this)
+        Resources.Elevator.addToScene(this)
         localStorage.setItem(`inventory`, JSON.stringify([]));
 
 
@@ -41,18 +23,8 @@ export class Level1 extends Scene {
         const player = new Player(30, 80);
         this.add(player);
 
-
-        this.add(new Ball(48, 192));
-
-
-        const ramp = new Ramp(200, 200, 150, 10, Math.PI / -20);
-        this.add(ramp);
-
         this.add(new Wall(0, 150, 10, 300));
         this.add(new Wall(512, 0, 1024, 10));
-
-        const kid = new Kid(300, 180, 0.5, 0.5);
-        this.add(kid)
 
         const invisibleCollider = new InvisibleCollider(1024, 150, 10, 300);
         this.add(invisibleCollider);

@@ -6,13 +6,14 @@ import { Level1 } from './level1';
 import { Level2 } from './level2';
 import { Level3 } from './level3';
 import { Level4 } from './level4';
+import { Elevator } from './elevator';
 
 const options = {
     width: 1440, height: 900,
     // displayMode: DisplayMode.FitScreen,
     physics: {
         solver: SolverStrategy.Realistic,
-        gravity: new Vector(0, 1200),
+        gravity: new Vector(0, 1800),
     }
 }
 
@@ -67,6 +68,11 @@ export class Game extends Engine {
         this.addScene('haven', haven);
         this.goToScene('haven');
 
+    }
+    showElevator() {
+        const elevator = new Elevator();
+        this.addScene('elevator', elevator);
+        this.goToScene('elevator');
     }
 }
 
