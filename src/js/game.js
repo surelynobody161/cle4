@@ -1,6 +1,7 @@
 import { Engine, Vector, DisplayMode, SolverStrategy } from 'excalibur';
 import { Resources, ResourceLoader } from './resources';
 import { Lobby } from './lobby';
+import { Intro } from './intro';
 import { Level1 } from './level1';
 import { Level2 } from './level2';
 import { Level3 } from './level3';
@@ -28,8 +29,7 @@ export class Game extends Engine {
     }
 
     startGame() {
-        const lobby = new Lobby(this);
-        this.addScene('lobby', lobby);
+
 
         // Register other scenes
         this.addScene('bossfight', new BossFightScene());
@@ -40,11 +40,23 @@ export class Game extends Engine {
             console.log('Gamepad detected');
             this.mygamepad = connectEvent.gamepad;
         });
-        this.showlobby();
+
+
+        const intro = new Intro(this);
+        this.addScene('begin', intro);
+        this.goToScene('begin');
+
     }
 
-    showlobby() {
-        this.goToScene('lobby');
+    showLobby() {
+        const lobby = new Lobby(this);
+        this.addScene('lobby', lobby);
+        this.goToScene('lobby')
+        this.input.gamepads.enabled = true;
+        this.input.gamepads.on('connect', (connectEvent) => {
+            console.log("Gamepad detected");
+            this.mygamepad = connectEvent.gamepad;
+        });
     }
 
     showlevel1() {
