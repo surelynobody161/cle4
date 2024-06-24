@@ -1,4 +1,4 @@
-import { ImageSource, Loader } from 'excalibur';
+import { ImageSource, Loader, Sound } from 'excalibur';
 
 const Resources = {
     Seagull: new ImageSource('images/gull.png'),
