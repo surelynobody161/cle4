@@ -12,7 +12,7 @@ export class Ball extends Actor {
         });
         this.body.useGravity = true; // Enable gravity
         this.body.bounciness = 0.5; // Make the ball bouncy
-        this.scale = new Vector(0.05, 0.05)
+        this.scale = new Vector(0.5, 0.5)
         this.z = 11;
     }
 

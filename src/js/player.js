@@ -45,6 +45,15 @@ export class Player extends Actor {
                 spriteHeight: 40
             },
         });
+        const rightWingSpritesheet = SpriteSheet.fromImageSource({
+            image: Resources.RightWing,
+            grid: {
+                rows: 1,
+                columns: 2,
+                spriteWidth: 50,
+                spriteHeight: 40
+            },
+        });
         const bothWingsSpritesheet = SpriteSheet.fromImageSource({
             image: Resources.BothWings,
             grid: {
@@ -56,14 +65,14 @@ export class Player extends Actor {
         });
         const idle = Animation.fromSpriteSheet(idleSpritesheet, range(0, 1), 300)
         const leftWing = Animation.fromSpriteSheet(leftWingSpritesheet, range(0, 1), 150)
-        // const rightWing = Animation.fromSpriteSheet(rightWingSpritesheet, range(1, 5), 20)
+        const rightWing = Animation.fromSpriteSheet(rightWingSpritesheet, range(1, 5), 20)
         const bothWings = Animation.fromSpriteSheet(bothWingsSpritesheet, range(0, 1), 150)
 
 
         this.graphics.add("idle", idle)
         this.graphics.add("leftwing", leftWing)
+        this.graphics.add("rightwing", rightWing)
         this.graphics.add("bothwings", bothWings)
-        // this.graphics.add("jump", jump)
 
         this.graphics.use(idle);
     }
@@ -114,11 +123,13 @@ export class Player extends Actor {
 
         //right
         if (yAxis < -0.5 && now > this.lastInputTime + cooldown && !this.buttonPressed) {
-            this.setAnimation('idle'); // Keep the animation as idle for this action
+            this.setAnimation('leftwing'); // Keep the animation as idle for this action
             // this.vel = new Vector(100, -300);
-            this.vel = new Vector(300, -700);
+            this.vel = new Vector(600, -700);
             this.lastInputTime = now;
             this.buttonPressed = true;
+            this.graphics.flipHorizontal = false;
+
         }
 
         //up
@@ -126,18 +137,20 @@ export class Player extends Actor {
             this.setAnimation('bothwings');
             // this.vel = new Vector(0, -300);
             this.vel = new Vector(0, -700);
-
             this.lastInputTime = now;
             this.buttonPressed = true;
+            this.graphics.flipHorizontal = false;
+
         }
 
         //left
         if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + cooldown && !this.isFace1Pressed) {
-            this.setAnimation('leftwing');
+            this.setAnimation('rightwing');
             // this.vel = new Vector(-100, -300);
-            this.vel = new Vector(-300, -700);
+            this.vel = new Vector(-600, -700);
             this.lastInputTime = now;
             this.isFace1Pressed = true;
+            this.graphics.flipHorizontal = true;
         }
 
         // Reset button states when buttons are released

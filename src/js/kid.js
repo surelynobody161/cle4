@@ -1,4 +1,4 @@
-import { Actor, CollisionType, Color } from 'excalibur';
+import { Actor, CollisionType, Color, Vector } from 'excalibur';
 import { Resources } from './resources.js';
 import { Ball } from './ball';
 
@@ -7,8 +7,9 @@ export class Kid extends Actor {
         super({
             x, y, width: 10, height: 20,
             collisionType: CollisionType.Passive,
-            
         });
+        this.scale = new Vector(10, 10);
+
     }
 
     onInitialize(engine) {

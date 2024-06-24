@@ -5,9 +5,10 @@ const Resources = {
     Seagull: new ImageSource('images/gull.png'),
     SeagullIdle: new ImageSource('images/seagullIdle (1).png'),
     LeftWing: new ImageSource('images/seagullFlap1.png'),
+    RightWing: new ImageSource('images/seagullFlap1.png'),
     BothWings: new ImageSource('images/seagullFlapBoth.png'),
 
-    Footballfield: new TiledResource('images/football-bg (1).tmx'),
+    Footballfield: new ImageSource('images/level1.png'),
     Haven: new ImageSource('images/level4.png'),
 
     Cafe: new ImageSource('images/level2.png'),

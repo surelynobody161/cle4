@@ -33,35 +33,46 @@ export class Level1 extends Scene {
         // lobbyBackground.graphics.use(lobbySprite);
         // this.add(lobbyBackground);
 
-        Resources.Footballfield.addToScene(this)
+        const background = new Actor({
+            x: 5120,
+            y: 1280,
+            anchor: new Vector(0.5, 0.5),
+            scale: new Vector(10, 10)
+        });
+
+        background.graphics.use(Resources.Footballfield.toSprite());
+        this.add(background);
         localStorage.setItem(`inventory`, JSON.stringify([]));
 
 
 
-        const player = new Player(30, 80);
+        const player = new Player(300, 800);
+        player.scale = new Vector(6, 6);
         this.add(player);
 
 
-        this.add(new Ball(48, 192));
+        this.add(new Ball(480, 1920));
 
 
-        const ramp = new Ramp(200, 200, 150, 10, Math.PI / -20);
+        const ramp = new Ramp(2000, 2000, 1500, 100, Math.PI / -20);
         this.add(ramp);
 
-        this.add(new Wall(0, 150, 10, 300));
-        this.add(new Wall(512, 0, 1024, 10));
+        this.add(new Wall(0, 1500, 100, 3000));
+        this.add(new Wall(5120, 0, 10240, 100));
+        this.add(new Floor(0, 2160));
 
-        const kid = new Kid(300, 180, 0.5, 0.5);
+
+        const kid = new Kid(3000, 1800, 5, 5);
         this.add(kid)
 
-        const invisibleCollider = new InvisibleCollider(1024, 150, 10, 300);
+        const invisibleCollider = new InvisibleCollider(10240, 1500, 100, 3000);
         this.add(invisibleCollider);
 
 
         console.log(engine, engine.mygamepad);
 
-        this.camera.zoom = 7;
+        this.camera.zoom = 0.6;
         this.camera.strategy.lockToActor(player);
-        this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 1024, 256)); // Set the game bounds
+        this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 10240, 2560)); // Set the game bounds
     }
 }
