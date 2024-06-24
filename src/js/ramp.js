@@ -19,3 +19,14 @@ export class Ramp extends Actor {
         this.collider.set(Shape.Box(this.width, this.height));
     }
 }
+
+export class BoxC extends Actor {
+    constructor(x, y, width, height) {
+        super({
+            pos: new Vector(x, y),
+            width: width,
+            height: height,
+            collisionType: CollisionType.Fixed
+        });
+    }
+}

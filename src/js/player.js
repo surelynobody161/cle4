@@ -17,7 +17,6 @@ export class Player extends Actor {
         this.inventory = [];
         this.jumpSpeed = -5000;
         this.canPoop = false;
-
     }
 
     onInitialize(engine) {

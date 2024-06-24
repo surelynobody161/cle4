@@ -1,10 +1,10 @@
 import { Actor, CollisionType } from 'excalibur';
 
-export class InvisibleCollider extends Actor {
+export class ElevatorCollider extends Actor {
     constructor(x, y, width, height) {
         super({
             x, y, width, height,
-            collisionType: CollisionType.Fixed,
+            collisionType: CollisionType.Passive,
         });
         // No visual representation, just the collision box
     }
