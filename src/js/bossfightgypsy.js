@@ -30,12 +30,12 @@ export class Killer extends Actor {
             image: Resources.Killer,
             grid: {
                 rows: 1,
-                columns: 2,
-                spriteWidth: 48,
-                spriteHeight: 43
+                columns: 7,
+                spriteWidth: 14,
+                spriteHeight: 41
             }
         });
-        this.runAnimation = Animation.fromSpriteSheet(killerSpriteSheet, range(0, 1), 100);
+        this.runAnimation = Animation.fromSpriteSheet(killerSpriteSheet, range(1, 2), 100);
         this.graphics.use(this.runAnimation);
 
         this.updateMovement();

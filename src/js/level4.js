@@ -24,7 +24,7 @@ export class Level4 extends Scene {
         this.add(background);
 
         const player = new Player(1000, 80);
-        player.scale = new Vector(7, 7);
+        // player.scale = new Vector(7, 7);
         this.add(player);
 
         this.add(new Wall(5120, 0, 10240, 100));

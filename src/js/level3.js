@@ -25,7 +25,7 @@ export class Level3 extends Scene {
         localStorage.setItem(`inventory`, JSON.stringify([]));
 
         const player = new Player(1000, 80);
-        player.scale = new Vector(7, 7);
+        // player.scale = new Vector(7, 7);
         this.add(player);
 
         const gaurd = new Guard(9740, 655)

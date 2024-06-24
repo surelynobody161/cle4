@@ -6,7 +6,9 @@ import { Actor, CollisionType, Vector, Input, DegreeOfFreedom, CompositeCollider
 
 export class Player extends Actor {
     constructor(x, y) {
-        super({ x, y, collisionType: CollisionType.Active });
+        super({ 
+            x, y, collisionType: CollisionType.Active 
+        });
         this.graphics.use(Resources.SeagullIdle.toSprite());
         this.isGrounded = false;
         this.scale = new Vector(0.5, 0.5);
@@ -25,7 +27,7 @@ export class Player extends Actor {
         this.z = 10;
 
         let circle = new CompositeCollider([
-            Shape.Circle(10, new Vector(0, 10)),
+            Shape.Circle(100, new Vector(0, 10)),
         ]);
         this.collider.set(circle);
 
@@ -34,8 +36,8 @@ export class Player extends Actor {
             grid: {
                 rows: 1,
                 columns: 2,
-                spriteWidth: 50,
-                spriteHeight: 40
+                spriteWidth: 500,
+                spriteHeight: 400
             },
         });
         const leftWingSpritesheet = SpriteSheet.fromImageSource({
@@ -43,8 +45,8 @@ export class Player extends Actor {
             grid: {
                 rows: 1,
                 columns: 2,
-                spriteWidth: 50,
-                spriteHeight: 40
+                spriteWidth: 500,
+                spriteHeight: 400
             },
         });
         const rightWingSpritesheet = SpriteSheet.fromImageSource({
@@ -52,8 +54,8 @@ export class Player extends Actor {
             grid: {
                 rows: 1,
                 columns: 2,
-                spriteWidth: 50,
-                spriteHeight: 40
+                spriteWidth: 500,
+                spriteHeight: 400
             },
         });
         const bothWingsSpritesheet = SpriteSheet.fromImageSource({
@@ -61,8 +63,8 @@ export class Player extends Actor {
             grid: {
                 rows: 1,
                 columns: 2,
-                spriteWidth: 51,
-                spriteHeight: 40
+                spriteWidth: 510,
+                spriteHeight: 400
             },
         });
         const idle = Animation.fromSpriteSheet(idleSpritesheet, range(0, 1), 300)
