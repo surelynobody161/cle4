@@ -1,9 +1,9 @@
-import { Scene, Sprite, Actor, Vector, BoundingBox } from 'excalibur';
+import { Scene, Sprite, Actor, Vector, BoundingBox, CollisionType } from 'excalibur';
 import { Resources, ResourceLoader } from './resources';
 import { Player } from './player';
 import { Floor } from './floor';
 import { Ball } from './ball';
-import { Ramp } from './ramp';
+import { Ramp, BoxC } from './ramp';
 import { Fries } from './fries';
 import { Wall } from './wall';
 import { Kid } from './kid';
@@ -74,6 +74,11 @@ export class Level1 extends Scene {
         const invisibleCollider = new InvisibleCollider(10240, 1500, 100, 3000);
         this.add(invisibleCollider);
 
+        const boxObada = new BoxC(3990, 1700, 120, 400);
+        this.add(boxObada);
+
+        const boxDariela = new BoxC(4145, 1705, 90, 310);
+        this.add(boxDariela);
 
         console.log(engine, engine.mygamepad);
 
