@@ -18,7 +18,7 @@ export class Level4 extends Scene {
             x: 5120,
             y: 1280,
             anchor: new Vector(0.5, 0.5),
-            scale: new Vector(10, 10)
+            scale: new Vector(1, 1)
         });
         background.graphics.use(Resources.Haven.toSprite());
         this.add(background);
