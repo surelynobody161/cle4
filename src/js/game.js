@@ -30,6 +30,8 @@ export class Game extends Engine {
 
     startGame() {
 
+        const lobby = new Lobby(this);
+        this.addScene('lobby', lobby);
 
         // Register other scenes
         this.addScene('bossfight', new BossFightScene());
@@ -63,6 +65,8 @@ export class Game extends Engine {
         const voedbalveld = new Level1();
         this.addScene('voedbalveld', voedbalveld);
         this.goToScene('voedbalveld');
+
+
     }
 
     showlevel2() {

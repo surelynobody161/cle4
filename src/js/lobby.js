@@ -47,9 +47,9 @@ export class Lobby extends Scene {
 
             const circleGraphic = new Circle({
                 radius: triggerPos.radius,
-                color: Color.Red,
-                strokeColor: Color.Transparent,
-                lineWidth: 0
+                color: Color.Transparent,
+                strokeColor: Color.Chartreuse,
+                lineWidth: 10
             });
 
             trigger.graphics.use(circleGraphic);

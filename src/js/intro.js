@@ -48,9 +48,7 @@ export class Intro extends Scene {
 
     }
 
-    onActivate(context) {
-
-    }
+   
 }
 
 
