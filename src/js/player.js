@@ -12,7 +12,7 @@ export class Player extends Actor {
         this.buttonPressed = false;
         this.isFace1Pressed = false;
         this.lastInputTime = 0;
-        this.currentAnimation = 'idle'; // Track current animation
+        this.currentAnimation = 'idle';
         this.inventory = [];
         this.jumpSpeed = -5000;
     }
@@ -133,7 +133,7 @@ export class Player extends Actor {
         }
 
         //up
-        if (yAxis < -0.5 && gamepad.isButtonPressed(Input.Buttons.Face1)  && !this.buttonPressed) {
+        if (yAxis < -0.5 && gamepad.isButtonPressed(Input.Buttons.Face1) && !this.buttonPressed) {
             this.setAnimation('bothwings');
             // this.vel = new Vector(0, -300);
             this.vel = new Vector(0, -700);
