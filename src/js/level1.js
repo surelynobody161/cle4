@@ -33,6 +33,11 @@ export class Level1 extends Scene {
         // lobbyBackground.graphics.use(lobbySprite);
         // this.add(lobbyBackground);
 
+
+        //plays the whole game
+        Resources.bgm1.play()
+
+
         const background = new Actor({
             x: 5120,
             y: 1280,

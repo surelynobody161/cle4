@@ -23,7 +23,9 @@ const Resources = {
     Kid: new ImageSource('images/Kid1Stand.png'),
     KidBall: new ImageSource('images/Kid1.png'),
 
-    Poop: new ImageSource('images/Kid1.png')
+    Poop: new ImageSource('images/Kid1.png'),
+
+    bgm1: new Sound('sounds/bill-evans.mp3') 
 
 }
 
