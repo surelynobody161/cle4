@@ -4,6 +4,8 @@ const Resources = {
     Intro: new ImageSource('images/introScene.png'),
     Outro: new ImageSource('images/outroScene.png'),
 
+    Appartment: new ImageSource('images/appartment.png'),
+    Line: new ImageSource('images/line.png'),
 
     Seagull: new ImageSource('images/gull.png'),
     SeagullIdle: new ImageSource('images/seagullIdle (1).png'),

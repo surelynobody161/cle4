@@ -8,6 +8,8 @@ import { Fries } from './fries';
 import { Wall } from './wall';
 import { Kid } from './kid';
 import { InvisibleCollider } from './invisibleCollider';
+import { ElevatorActor } from './elevatorActor.js';
+
 
 export class Elevator extends Scene {
     constructor(game) {
@@ -24,24 +26,21 @@ export class Elevator extends Scene {
             y: engine.drawHeight / 2,
             anchor: new Vector(0.5, 0.5)
         });
-        background.graphics.use(Resources.Elevator.toSprite());
-        this.add(background);
+
+        const elevatorAnimation = new ElevatorActor(720, 450)
+        this.add(elevatorAnimation)
 
         localStorage.setItem(`inventory`, JSON.stringify([]));
 
-        const player = new Player(30, 80);
-        this.add(player);
 
-        this.add(new Wall(0, 150, 10, 300));
-        this.add(new Wall(512, 0, 1024, 10));
-
-        const invisibleCollider = new InvisibleCollider(1024, 150, 10, 300);
-        this.add(invisibleCollider);
 
         console.log(engine, engine.mygamepad);
 
-        this.camera.zoom = 7;
-        this.camera.strategy.lockToActor(player);
-        this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 1024, 256)); // Set the game bounds
+        this.on('preupdate', (event) => {
+            if (event.engine.input.keyboard.wasPressed(Keys.Space)) {
+                this.game.showAppartement()
+
+            }
+        });
     }
 }

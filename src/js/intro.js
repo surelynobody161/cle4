@@ -1,4 +1,4 @@
-import { Actor, Resource, Scene, DisplayMode, Keys, Input, Vector, Engine } from "excalibur"
+import { Actor, Resource, Scene, DisplayMode, Keys, Input, Vector, Engine, Gamepads } from "excalibur"
 import { Resources, ResourceLoader } from "./resources"
 import { Level1 } from './level1';
 

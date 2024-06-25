@@ -8,6 +8,7 @@ import { InvisibleCollider } from './invisibleCollider';
 import { ElevatorCollider } from './elevatorCollider';
 import { Fries } from './fries';
 
+
 export class Level3 extends Scene {
     constructor() {
         super();

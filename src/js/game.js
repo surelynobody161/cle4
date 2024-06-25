@@ -11,6 +11,9 @@ import { Level4 } from './level4';
 import { Elevator } from './elevator';
 import { Level4Boss } from './level4boss';
 import { BossFightScene } from './bossfightscene';
+import { Appartment } from './appartment';
+import { House } from './house';
+
 
 const options = {
     width: 1440,
@@ -47,7 +50,7 @@ export class Game extends Engine {
         });
 
 
-        const intro = new Intro(this);
+        const intro = new Elevator(this);
         this.addScene('begin', intro);
         this.goToScene('begin');
 
@@ -95,6 +98,12 @@ export class Game extends Engine {
         const elevator = new Elevator(this);
         this.addScene('elevator', elevator);
         this.goToScene('elevator');
+    }
+
+    showAppartement() {
+        const appartement1 = new House();
+        this.addScene('appartement1', appartement1);
+        this.goToScene('appartement1');
     }
 
     showBossFight() {
