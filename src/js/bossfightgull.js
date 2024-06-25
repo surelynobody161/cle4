@@ -121,10 +121,14 @@ export class Gull extends Actor {
         });
 
         // Configure the camera
-        const player = this; // Assuming `player` is the current Gull instance
-        engine.currentScene.camera.zoom = 1.2;
-        engine.currentScene.camera.strategy.lockToActor(player);
-        engine.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 5120, 640)); // Set the game bounds
+
+    }
+
+    setAnimation(animationName) {
+        if (this.currentAnimation !== animationName) {
+            this.graphics.use(animationName);
+            this.currentAnimation = animationName;
+        }
     }
 
     movementSpeed(engine) {
@@ -142,7 +146,7 @@ export class Gull extends Actor {
         // Right movement
         if (yAxis < -0.5 && now > this.lastInputTime + cooldown && !this.buttonPressed) {
             this.setAnimation('leftwing'); // Set the animation to leftwing
-            this.vel = new Vector(600, -700);
+            this.vel = new Vector(300, -500);
             this.lastInputTime = now;
             this.buttonPressed = true;
         }
@@ -150,7 +154,7 @@ export class Gull extends Actor {
         // Up movement
         if (yAxis < -0.5 && gamepad.isButtonPressed(Input.Buttons.Face1) && !this.buttonPressed) {
             this.setAnimation('bothwings');
-            this.vel = new Vector(0, -700);
+            this.vel = new Vector(0, -500);
             this.lastInputTime = now;
             this.buttonPressed = true;
         }
@@ -158,7 +162,7 @@ export class Gull extends Actor {
         // Left movement
         if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + cooldown && !this.isFace1Pressed) {
             this.setAnimation('rightwing');
-            this.vel = new Vector(-600, -700);
+            this.vel = new Vector(-300, -500);
             this.lastInputTime = now;
             this.isFace1Pressed = true;
         }
