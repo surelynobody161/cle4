@@ -28,13 +28,13 @@ const Resources = {
     Ball: new ImageSource('images/ball.png'),
     Kid: new ImageSource('images/Kid1Stand.png'),
     KidBall: new ImageSource('images/Kid1.png'),
-    Gaurd: new ImageSource('images/Gaurd.png'),
 
     Poop: new ImageSource('images/poop.png'),
     Gull: new ImageSource('images/gull.png'),
     Killer: new ImageSource('images/eliza-sheet.png'),
     Knife: new ImageSource('images/knife.png'),
-    Gaurd: new ImageSource('images/Kid1.png'),
+    Gaurd: new ImageSource('images/Gaurd.png'),
+    GaurdWP: new ImageSource('images/GaurdWP.png'),
 
     bgm1: new Sound('sounds/bill-evans.mp3'),
     TECHNO: new Sound('sounds/DO YOU WANT MORE_.mp3')
