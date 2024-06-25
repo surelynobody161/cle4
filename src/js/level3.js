@@ -29,7 +29,7 @@ export class Level3 extends Scene {
         // player.scale = new Vector(7, 7);
         this.add(player);
 
-        const gaurd = new Guard(9740, 655)
+        const gaurd = new Guard(9860, 655)
         this.add(gaurd)
 
         this.add(new Wall(5120, 0, 10240, 100));
@@ -39,7 +39,7 @@ export class Level3 extends Scene {
 
 
         this.add(new InvisibleCollider(0, 1500, 100, 3000));
-        this.add(new ElevatorCollider(9840, 655, 100, 300));
+        this.add(new ElevatorCollider(9860, 655, 150, 400));
 
         console.log(engine, engine.mygamepad);
 
