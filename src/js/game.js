@@ -18,6 +18,7 @@ import { House } from './house';
 const options = {
     width: 1440,
     height: 900,
+    displayMode: DisplayMode.FillScreen, // Ensure this is set to Container or FillScreen as needed
     physics: {
         solver: SolverStrategy.Realistic,
         gravity: new Vector(0, 1800),
