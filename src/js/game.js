@@ -38,7 +38,7 @@ export class Game extends Engine {
         // Register other scenes
         this.addScene('bossfight', new BossFightScene());
         this.addScene('level4boss', new Level4Boss());
-        this.addScene('elevator', new Elevator(this));
+        this.addScene('elevator', new Elevator());
 
         this.input.gamepads.enabled = true;
         this.input.gamepads.on('connect', (connectEvent) => {

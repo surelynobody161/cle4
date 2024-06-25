@@ -1,4 +1,5 @@
 import { Actor, CollisionType } from 'excalibur';
+import { Player } from './player';
 
 export class ElevatorCollider extends Actor {
     constructor(x, y, width, height) {
@@ -14,7 +15,11 @@ export class ElevatorCollider extends Actor {
     }
 
     onCollision(event, engine) {
-        // Assuming 'NextScene' is a scene already defined in your game
-        engine.goToScene('elevator');
+        if (event.other instanceof Player) {
+            engine.goToScene('elevator');
+        } else {
+            console.log('squeeky clean');
+        }
+
     }
 }
