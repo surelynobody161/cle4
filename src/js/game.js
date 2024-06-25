@@ -2,6 +2,8 @@ import { Engine, Vector, DisplayMode, SolverStrategy } from 'excalibur';
 import { Resources, ResourceLoader } from './resources';
 import { Lobby } from './lobby';
 import { Intro } from './intro';
+import { Outro } from './outro';
+
 import { Level1 } from './level1';
 import { Level2 } from './level2';
 import { Level3 } from './level3';
@@ -36,6 +38,7 @@ export class Game extends Engine {
         // Register other scenes
         this.addScene('bossfight', new BossFightScene());
         this.addScene('level4boss', new Level4Boss());
+        this.addScene('elevator', new Elevator(this));
 
         this.input.gamepads.enabled = true;
         this.input.gamepads.on('connect', (connectEvent) => {
@@ -47,6 +50,7 @@ export class Game extends Engine {
         const intro = new Intro(this);
         this.addScene('begin', intro);
         this.goToScene('begin');
+
 
     }
 
@@ -88,7 +92,7 @@ export class Game extends Engine {
     }
 
     showElevator() {
-        const elevator = new Elevator();
+        const elevator = new Elevator(this);
         this.addScene('elevator', elevator);
         this.goToScene('elevator');
     }

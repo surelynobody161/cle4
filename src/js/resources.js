@@ -4,7 +4,7 @@ const Resources = {
     Intro: new ImageSource('images/introScene.png'),
     Outro: new ImageSource('images/outroScene.png'),
 
-    
+
     Seagull: new ImageSource('images/gull.png'),
     SeagullIdle: new ImageSource('images/seagullIdle (1).png'),
     LeftWing: new ImageSource('images/seagullFlap1.png'),
@@ -33,7 +33,9 @@ const Resources = {
     Gull: new ImageSource('images/gull.png'),
     Killer: new ImageSource('images/eliza-sheet.png'),
     Knife: new ImageSource('images/knife.png'),
-    Gaurd: new ImageSource('images/Kid1.png'),
+
+    Gaurd: new ImageSource('images/Gaurd.png'),
+    GaurdWP: new ImageSource('images/GaurdWP.png'),
 
     bgm1: new Sound('sounds/bill-evans.mp3'),
     TECHNO: new Sound('sounds/DO YOU WANT MORE_.mp3')
