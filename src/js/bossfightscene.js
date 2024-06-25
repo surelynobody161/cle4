@@ -14,7 +14,7 @@ export class BossFightScene extends Scene {
             x: 512,
             y: 300,
             anchor: new Vector(0.5, 0.5),
-            scale: new Vector(0.5, 0.5)
+            scale: new Vector(0.8, 0.5)
         });
 
         background.graphics.use(Resources.HavenBlank.toSprite());

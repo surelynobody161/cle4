@@ -35,7 +35,7 @@ export class Killer extends Actor {
                 spriteHeight: 41
             }
         });
-        this.runAnimation = Animation.fromSpriteSheet(killerSpriteSheet, range(1, 2), 100);
+        this.runAnimation = Animation.fromSpriteSheet(killerSpriteSheet, range(0, 6), 100);
         this.graphics.use(this.runAnimation);
 
         this.updateMovement();
@@ -68,12 +68,12 @@ export class Killer extends Actor {
 
         this.on('preupdate', () => {
             // Move the Killer left and right
-            if (this.pos.x >= this.engine.drawWidth - this.width) {
+            if (this.pos.x >= 1400) {
                 direction = -1;
-            } else if (this.pos.x <= 0) {
+            } else if (this.pos.x <= 100) {
                 direction = 1;
             }
-            
+
             this.vel.x = direction * 100;
         });
     }
@@ -93,8 +93,6 @@ export class Killer extends Actor {
             }
             console.log('Killer is defeated!');
         }
-        
-
     }
 
     shootAtGull(engine) {

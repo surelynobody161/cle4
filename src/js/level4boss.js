@@ -1,4 +1,4 @@
-import { Engine, Scene, Color, DisplayMode } from "excalibur";
+import { Engine, Scene, Color, DisplayMode, BoundingBox } from "excalibur";
 import { Resources, ResourceLoader } from './resources.js';
 import { Gull } from "./bossfightgull.js";
 import { Killer } from "./bossfightgypsy.js";
@@ -30,6 +30,11 @@ export class Level4Boss extends Scene {
         });
 
         this.add(boss);
+
+        const player = this; // Assuming `player` is the current Gull instance
+        engine.currentScene.camera.zoom = 1.5;
+        engine.currentScene.camera.strategy.lockToActor(player);
+        engine.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 1440, 640)); // Set the game bounds
     }
 
     onActivate(context) {
