@@ -2,6 +2,7 @@ import { Scene, SpriteSheet, Actor, Vector } from 'excalibur';
 import { Resources, ResourceLoader } from './resources';
 import { Gull } from './bossfightgull';
 import { Killer } from './bossfightgypsy';
+import { Player } from './player';
 
 export class BossFightScene extends Scene {
     constructor() {
@@ -22,6 +23,7 @@ export class BossFightScene extends Scene {
         console.log('BossFightScene Initialized');
         // Add initialization logic here, like loading resources, setting up actors, etc.
         const gull = new Gull();
+        gull.scale = new Vector(0.1, 0.1);
         this.add(gull);
 
         const killer = new Killer(this);

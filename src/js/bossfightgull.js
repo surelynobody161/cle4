@@ -1,4 +1,4 @@
-import { Actor, Vector, CollisionType, Shape, Input, BoundingBox, EventDispatcher, DegreeOfFreedom } from "excalibur";
+import { Actor, Vector, CollisionType, Shape, Input, BoundingBox, EventDispatcher, DegreeOfFreedom, Animation, SpriteSheet, range } from "excalibur";
 import { Resources } from './resources.js';
 import { BossFightPoop } from "./bossfightpoop.js";
 import { Projectile } from "./bossfightprojectile.js";
@@ -36,6 +36,55 @@ export class Gull extends Actor {
         }
 
         let gamepad = engine.mygamepad;
+
+        const idleSpritesheet = SpriteSheet.fromImageSource({
+            image: Resources.SeagullIdle,
+            grid: {
+                rows: 1,
+                columns: 2,
+                spriteWidth: 500,
+                spriteHeight: 400
+            },
+        });
+        const leftWingSpritesheet = SpriteSheet.fromImageSource({
+            image: Resources.LeftWing,
+            grid: {
+                rows: 1,
+                columns: 2,
+                spriteWidth: 500,
+                spriteHeight: 400
+            },
+        });
+        const rightWingSpritesheet = SpriteSheet.fromImageSource({
+            image: Resources.RightWing,
+            grid: {
+                rows: 1,
+                columns: 2,
+                spriteWidth: 500,
+                spriteHeight: 400
+            },
+        });
+        const bothWingsSpritesheet = SpriteSheet.fromImageSource({
+            image: Resources.BothWings,
+            grid: {
+                rows: 1,
+                columns: 2,
+                spriteWidth: 510,
+                spriteHeight: 400
+            },
+        });
+        const idle = Animation.fromSpriteSheet(idleSpritesheet, range(0, 1), 300)
+        const leftWing = Animation.fromSpriteSheet(leftWingSpritesheet, range(0, 1), 150)
+        const rightWing = Animation.fromSpriteSheet(rightWingSpritesheet, range(0, 1), 150)
+        const bothWings = Animation.fromSpriteSheet(bothWingsSpritesheet, range(0, 1), 150)
+
+
+        this.graphics.add("idle", idle)
+        this.graphics.add("leftwing", leftWing)
+        this.graphics.add("rightwing", rightWing)
+        this.graphics.add("bothwings", bothWings)
+
+        this.graphics.use(idle);
 
         // Set up the sprite and animations
         this.graphics.use(Resources.SeagullIdle.toSprite());
@@ -92,6 +141,7 @@ export class Gull extends Actor {
 
         // Right movement
         if (yAxis < -0.5 && now > this.lastInputTime + cooldown && !this.buttonPressed) {
+            this.setAnimation('leftwing'); // Set the animation to leftwing
             this.vel = new Vector(600, -700);
             this.lastInputTime = now;
             this.buttonPressed = true;
@@ -99,6 +149,7 @@ export class Gull extends Actor {
 
         // Up movement
         if (yAxis < -0.5 && gamepad.isButtonPressed(Input.Buttons.Face1) && !this.buttonPressed) {
+            this.setAnimation('bothwings');
             this.vel = new Vector(0, -700);
             this.lastInputTime = now;
             this.buttonPressed = true;
@@ -106,6 +157,7 @@ export class Gull extends Actor {
 
         // Left movement
         if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + cooldown && !this.isFace1Pressed) {
+            this.setAnimation('rightwing');
             this.vel = new Vector(-600, -700);
             this.lastInputTime = now;
             this.isFace1Pressed = true;
@@ -123,6 +175,7 @@ export class Gull extends Actor {
         if (!gamepad.isButtonPressed(Input.Buttons.Face1) && yAxis >= -0.5) {
             this.buttonPressed = false;
             this.isFace1Pressed = false;
+            this.setAnimation('idle');
         }
 
         console.log(`yAxis: ${yAxis}`);

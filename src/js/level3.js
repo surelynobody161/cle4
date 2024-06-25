@@ -6,6 +6,7 @@ import { Wall } from './wall';
 import { Guard } from './gaurd';
 import { InvisibleCollider } from './invisibleCollider';
 import { ElevatorCollider } from './elevatorCollider';
+import { Fries } from './fries';
 
 export class Level3 extends Scene {
     constructor() {
@@ -34,6 +35,8 @@ export class Level3 extends Scene {
         this.add(new Wall(5120, 0, 10240, 100));
         this.add(new Wall(10200, 1500, 100, 3000));
         this.add(new Floor(0, 2560));
+        this.add(new Fries(3000, 1230));
+
 
         this.add(new InvisibleCollider(0, 1500, 100, 3000));
         this.add(new ElevatorCollider(9840, 655, 100, 300));
