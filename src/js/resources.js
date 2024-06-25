@@ -42,6 +42,7 @@ const Resources = {
     bgm1: new Sound('sounds/bill-evans.mp3'),
     TECHNO: new Sound('sounds/DO YOU WANT MORE_.mp3')
 
+    
 
 }
 

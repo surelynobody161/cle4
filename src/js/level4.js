@@ -32,7 +32,7 @@ export class Level4 extends Scene {
         this.add(new InvisibleCollider(0, 1500, 100, 3000));
         this.add(new InvisibleCollider(8000, 1500, 100, 3000));
 
-        const bossFightCollider = new BossFightCollider(2340, 1800, 100, 300);
+        const bossFightCollider = new BossFightCollider(2740, 1900, 100, 300);
         this.add(bossFightCollider);
 
         this.camera.zoom = 0.6;

@@ -8,6 +8,7 @@ export class Projectile extends Actor {
             radius: 5,
             scale: new Vector(5, 5),
             collisionType: CollisionType.Passive,
+            color: Color.Red,
             collider: Shape.Circle(5),
             image: Resources.Knife,
         });

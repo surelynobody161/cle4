@@ -36,7 +36,6 @@ export class Intro extends Scene {
         this.on('preupdate', (event) => {
             if (event.engine.input.keyboard.wasPressed(Keys.Space)) {
                 this.game.showlevel1()
-
             }
         });
 

@@ -5,6 +5,7 @@ import { Floor } from './floor';
 import { Wall } from './wall';
 import { BoxC } from './ramp';
 import { Player } from './player';
+import { InvisibleCollider } from './invisibleCollider.js';
 
 
 export class House extends Scene {
@@ -26,6 +27,7 @@ export class House extends Scene {
         this.add(new Floor(90, 842));
         this.add(new Wall(11, 63, 330, 2000));
         this.add(new Floor(90, 18));
+        this.add(new InvisibleCollider(1600, 63, 100, 2000))
 
         const wall =  new BoxC(1258, 0, 7, 500);
         this.add(wall);

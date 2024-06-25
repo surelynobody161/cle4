@@ -30,7 +30,7 @@ export class Game extends Engine {
 
     constructor() {
         super(options);
-        this.showDebug(true);
+        // this.showDebug(true);
         this.start(ResourceLoader).then(() => this.startGame());
     }
 
@@ -51,7 +51,7 @@ export class Game extends Engine {
         });
 
 
-        const intro = new Elevator(this);
+        const intro = new Intro(this);
         this.addScene('begin', intro);
         this.goToScene('begin');
 
@@ -100,7 +100,7 @@ export class Game extends Engine {
     }
 
     showElevator() {
-        const elevator = new Elevator(this);
+        const elevator = new Elevator(this); // Pass the game instance
         this.addScene('elevator', elevator);
         this.goToScene('elevator');
     }
