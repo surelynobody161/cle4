@@ -88,9 +88,8 @@ export class Killer extends Actor {
         if (this.health <= 0) {
             this.kill();
             this.shootTimer.cancel();
-            if (this.gameUI) {
-                this.gameUI.showWin(this.engine); // Show win label
-            }
+            engine.goToScene('outro');
+
             console.log('Killer is defeated!');
         }
     }

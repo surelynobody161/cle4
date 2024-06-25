@@ -113,9 +113,8 @@ export class Gull extends Actor {
             if (this.health <= 0) {
                 this.eventDispatcher.emit('gulldied');
                 this.kill();
-                if (this.ui) {
-                    this.ui.showLose(engine); // Show lose label
-                }
+                engine.goToScene('begin');
+
                 console.log('Gull is defeated!');
             }
         });

@@ -55,6 +55,10 @@ export class Game extends Engine {
         this.addScene('begin', intro);
         this.goToScene('begin');
 
+        const outro = new Outro(this);
+        this.addScene('outro', outro);
+
+
 
     }
 
