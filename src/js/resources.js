@@ -33,11 +33,9 @@ const Resources = {
     Gull: new ImageSource('images/gull.png'),
     Killer: new ImageSource('images/eliza-sheet.png'),
     Knife: new ImageSource('images/knife.png'),
-<<<<<<< HEAD
-=======
+
     Gaurd: new ImageSource('images/Gaurd.png'),
     GaurdWP: new ImageSource('images/GaurdWP.png'),
->>>>>>> f1ab0d2e8928370f27ddd81b366478fe0cc256e2
 
     bgm1: new Sound('sounds/bill-evans.mp3'),
     TECHNO: new Sound('sounds/DO YOU WANT MORE_.mp3')
