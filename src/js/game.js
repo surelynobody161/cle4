@@ -2,6 +2,8 @@ import { Engine, Vector, DisplayMode, SolverStrategy } from 'excalibur';
 import { Resources, ResourceLoader } from './resources';
 import { Lobby } from './lobby';
 import { Intro } from './intro';
+import { Outro } from './outro';
+
 import { Level1 } from './level1';
 import { Level2 } from './level2';
 import { Level3 } from './level3';
@@ -47,6 +49,7 @@ export class Game extends Engine {
         const intro = new Intro(this);
         this.addScene('begin', intro);
         this.goToScene('begin');
+
 
     }
 

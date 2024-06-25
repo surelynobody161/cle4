@@ -31,8 +31,6 @@ export class Intro extends Scene {
 
 
 
-
-
         
 
         this.on('preupdate', (event) => {
