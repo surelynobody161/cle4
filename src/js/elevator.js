@@ -1,4 +1,4 @@
-import { Scene, Sprite, Actor, Vector, BoundingBox } from 'excalibur';
+import { Actor, Resource, Scene, DisplayMode, Keys, Input, Vector, Engine, BoundingBox } from "excalibur";
 import { Resources, ResourceLoader } from './resources';
 import { Player } from './player';
 import { Floor } from './floor';
@@ -10,15 +10,24 @@ import { Kid } from './kid';
 import { InvisibleCollider } from './invisibleCollider';
 
 export class Elevator extends Scene {
-    constructor() {
-        super();
+    constructor(game) {
+        super({
+            displayMode: DisplayMode.FillScreen
+        });
+        this.game = game;
     }
 
     onInitialize(engine) {
-        Resources.Elevator.addToScene(this)
+        console.log('je bent nu in elevator');
+        const background = new Actor({
+            x: engine.drawWidth / 2,
+            y: engine.drawHeight / 2,
+            anchor: new Vector(0.5, 0.5)
+        });
+        background.graphics.use(Resources.Elevator.toSprite());
+        this.add(background);
+
         localStorage.setItem(`inventory`, JSON.stringify([]));
-
-
 
         const player = new Player(30, 80);
         this.add(player);
@@ -28,7 +37,6 @@ export class Elevator extends Scene {
 
         const invisibleCollider = new InvisibleCollider(1024, 150, 10, 300);
         this.add(invisibleCollider);
-
 
         console.log(engine, engine.mygamepad);
 
