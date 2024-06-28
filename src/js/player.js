@@ -2,7 +2,7 @@ import { Floor } from './floor';
 import { Fries } from './fries';
 import { Poop } from './poop';
 import { Resources } from './resources';
-import { Actor, CollisionType, Vector, Input, DegreeOfFreedom, CompositeCollider, Shape, SpriteSheet, Animation, AnimationStrategy, range } from 'excalibur';
+import { Actor, CollisionType, Vector, Input, DegreeOfFreedom, CompositeCollider, Shape, SpriteSheet, Animation, AnimationStrategy, range, Keys } from 'excalibur';
 
 export class Player extends Actor {
     constructor(x, y) {
@@ -127,6 +127,59 @@ export class Player extends Actor {
     }
 
     onPreUpdate(engine) {
+
+        const keyboard = engine.input.keyboard;
+        const now = Date.now();
+        const cooldown = 700;
+
+
+        //KEYBOARD \/
+        keyboard.on('press', (evt) => {
+            let key = evt.key;
+            if (key == Keys.D && now > this.lastInputTime + cooldown) {
+                this.setAnimation('leftwing'); // Set the animation to leftwing
+                this.vel = new Vector(600, -700);
+                this.lastInputTime = now;
+
+            }
+        });
+
+
+
+        keyboard.on('press', (evt) => {
+            let key = evt.key;
+            if (key == Keys.A && now > this.lastInputTime + cooldown) {
+                this.setAnimation('rightwing');
+                this.vel = new Vector(-600, -700);
+                this.lastInputTime = now;
+
+            }
+        });
+
+
+        keyboard.on('press', (evt) => {
+            let key = evt.key;
+            if (key == Keys.W ) {
+                this.setAnimation('bothwings');
+                this.vel = new Vector(0, -700);
+                this.lastInputTime = now;
+                this.buttonPressed = true;
+
+            }
+        });
+
+        keyboard.on('press', (evt) => {
+            let key = evt.key;
+            if (key == Keys.S && now > this.lastInputTime + cooldown) {
+                this.poop();
+
+            }
+        });
+
+
+
+
+
         if (!engine.mygamepad) {
             console.log("No gamepad connected");
             return;
@@ -136,8 +189,7 @@ export class Player extends Actor {
         let gamepad = engine.mygamepad;
         let yAxis = gamepad.getAxes(Input.Axes.LeftStickY);
 
-        const now = Date.now();
-        const cooldown = 700;
+
 
 
 
@@ -190,36 +242,21 @@ export class Player extends Actor {
             this.isFace1Pressed = false;
         }
 
-        console.log(`yAxis: ${yAxis}`);
-
-        // if (gamepad.isButtonPressed(Input.Buttons.Face2) && now > this.lastInputTime + cooldown && !this.isFace1Pressed && !this.isFace2Pressed) {
-        //     this.vel = new Vector(100, -300);
-        //     this.lastInputTime = now;
-        //     this.buttonPressed = true;
-        // }
-
-        // if (gamepad.isButtonPressed(Input.Buttons.Face2) && gamepad.isButtonPressed(Input.Buttons.Face1) && !this.isFace1Pressed && !this.isFace2Pressed) {
-        //     this.vel = new Vector(0, -300);
-        //     this.lastInputTime = now;
-        //     this.buttonPressed = true;
-        // }
-
-        // if (gamepad.isButtonPressed(Input.Buttons.Face1) && now > this.lastInputTime + cooldown && !this.isFace1Pressed && !this.isFace2Pressed) {
-        //     this.vel = new Vector(-100, -300);
-        //     this.lastInputTime = now;
-        //     this.isFace1Pressed = true;
-        // }
 
 
-        // // Reset button states when buttons are released
-        // if (!gamepad.isButtonPressed(Input.Buttons.Face1) && gamepad.isButtonPressed(Input.Buttons.Face2)) {
-        //     this.buttonPressed = false;
-        //     this.isFace1Pressed = false;
-        // }
+
+
+
+
+
+
+
+
+
     }
 
-    // addToInventory(item) {
-    //     this.inventory.push(item);
-    //     console.log("Item added to inventory:", item);
-    // }
+
+
+
+
 }

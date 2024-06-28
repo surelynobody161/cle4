@@ -84,6 +84,16 @@ export class Lobby extends Scene {
     }
 
     onPreUpdate(engine) {
+
+
+
+
+        
+
+
+
+
+
         if (!engine.mygamepad) {
             console.log("No gamepad connected");
             return;
