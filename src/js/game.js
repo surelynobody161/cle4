@@ -53,7 +53,7 @@ export class Game extends Engine {
         });
 
 
-        const intro = new Lobby(this);
+        const intro = new Intro(this);
         this.addScene('begin', intro);
         this.goToScene('begin');
 
