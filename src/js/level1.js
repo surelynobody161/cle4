@@ -126,7 +126,7 @@ export class Level1 extends Scene {
 
         this.camera.zoom = 0.6;
         this.camera.strategy.lockToActor(player);
-        this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 10240, 2560)); // Set the game bounds
+        this.camera.strategy.limitCameraBounds(new BoundingBox(100, 0, 10240, 2560)); // Set the game bounds
 
 
 

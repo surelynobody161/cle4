@@ -1,4 +1,4 @@
-import { Actor, Vector, CollisionType, Animation, Shape, Timer, SpriteSheet, range } from "excalibur";
+import { Actor, Vector, CollisionType, Animation, Shape, Timer, SpriteSheet, range, Scene, Engine} from "excalibur";
 import { Resources } from './resources.js';
 import { BossFightPoop } from "./bossfightpoop.js";
 import { Projectile } from "./bossfightprojectile.js"; // Import the Projectile class
@@ -12,7 +12,6 @@ export class Killer extends Actor {
             collider: Shape.Box(49, 23) // Ensure collider is the same size as the sprite
         });
 
-        this.engine = engine;
         this.z = 10;
         this.scale = new Vector(3, 3);
         this.pos = new Vector(500, 500);
@@ -88,7 +87,7 @@ export class Killer extends Actor {
         if (this.health <= 0) {
             this.kill();
             this.shootTimer.cancel();
-            engine.goToScene('outro');
+            this.engine.goToScene('outro');
 
             console.log('Killer is defeated!');
         }

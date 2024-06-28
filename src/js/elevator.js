@@ -22,7 +22,7 @@ export class Elevator extends Scene {
         //     anchor: new Vector(0.5, 0.5)
         // });
 
-        const elevatorAnimation = new ElevatorActor(720, 450);
+        const elevatorAnimation = new ElevatorActor(engine.drawWidth / 2, engine.drawHeight / 2);
         this.add(elevatorAnimation);
 
         localStorage.setItem('inventory', JSON.stringify([]));
@@ -33,5 +33,7 @@ export class Elevator extends Scene {
                 engine.goToScene('house');
             }
         });
+
+        this.camera.zoom = 1;
     }
 }

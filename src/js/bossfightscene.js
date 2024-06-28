@@ -7,6 +7,7 @@ import { Player } from './player';
 export class BossFightScene extends Scene {
     constructor() {
         super();
+
     }
 
     onInitialize(engine) {
