@@ -84,10 +84,10 @@ export class Killer extends Actor {
             this.ui.updateHealth(this.health / this.maxHealth); // Update de health bar
         }
         console.log(`Killer health: ${this.health}`);
-        if (this.health <= 0) {
+        if (this.health <= 300) {
             this.kill();
             this.shootTimer.cancel();
-            this.engine.goToScene('outro');
+            this.scene.engine.goToScene('outro');
 
             console.log('Killer is defeated!');
         }
