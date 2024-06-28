@@ -2,10 +2,10 @@ import { Actor, Scene, Vector, Sprite, Color, Circle, Input, Buttons } from 'exc
 import { Resources } from './resources';
 
 const triggerPositions = [
-    { x: 139, y: 695, radius: 28, sceneKey: 'cafe' },
-    { x: 1237, y: 633, radius: 28, sceneKey: 'haven' },
-    { x: 900, y: 780, radius: 28, sceneKey: 'voedbalveld' },
-    { x: 543, y: 664, radius: 28, sceneKey: 'appartement' },
+    { x: 139*1.5, y: 695*1.5, radius: 28, sceneKey: 'cafe' },
+    { x: 1237*1.5, y: 633*1.5, radius: 28, sceneKey: 'haven' },
+    { x: 900*1.5, y: 780*1.5, radius: 28, sceneKey: 'voedbalveld' },
+    { x: 543*1.5, y: 664*1.5, radius: 28, sceneKey: 'appartement' },
 ];
 
 const locationsOrder = ['haven', 'voedbalveld', 'appartement', 'cafe'];

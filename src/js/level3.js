@@ -44,7 +44,7 @@ export class Level3 extends Scene {
 
         console.log(engine, engine.mygamepad);
 
-        this.camera.zoom = 0.4;
+        this.camera.zoom = 0.6;
         this.camera.strategy.lockToActor(player);
         this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 10230, 2550));
     }

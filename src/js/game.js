@@ -30,7 +30,7 @@ export class Game extends Engine {
 
     constructor() {
         super(options);
-        // this.showDebug(true);
+        this.showDebug(true);
         this.start(ResourceLoader).then(() => this.startGame());
     }
 
@@ -43,6 +43,8 @@ export class Game extends Engine {
         this.addScene('bossfight', new BossFightScene());
         this.addScene('level4boss', new Level4Boss());
         this.addScene('elevator', new Elevator());
+        this.addScene('house', new House());
+
 
         this.input.gamepads.enabled = true;
         this.input.gamepads.on('connect', (connectEvent) => {
@@ -51,7 +53,7 @@ export class Game extends Engine {
         });
 
 
-        const intro = new Intro(this);
+        const intro = new Lobby(this);
         this.addScene('begin', intro);
         this.goToScene('begin');
 
@@ -100,15 +102,15 @@ export class Game extends Engine {
     }
 
     showElevator() {
-        const elevator = new Elevator(this); // Pass the game instance
+        const elevator = new Elevator(); // Pass the game instance
         this.addScene('elevator', elevator);
         this.goToScene('elevator');
     }
 
-    showAppartement() {
-        const appartement1 = new House();
-        this.addScene('appartement1', appartement1);
-        this.goToScene('appartement1');
+    showHouse() {
+        const house = new House();
+        this.addScene('house', house);
+        this.goToScene('house');
     }
 
     showBossFight() {

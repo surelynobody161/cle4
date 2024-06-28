@@ -1,4 +1,4 @@
-import { Actor, CollisionType, Color, Vector } from 'excalibur';
+import { Actor, CollisionType, Color, Vector, DegreeOfFreedom, CompositeCollider, Shape, SpriteSheet, Animation, AnimationStrategy, range ,} from 'excalibur';
 import { Resources } from './resources.js';
 import { Ball } from './ball';
 import { Paper } from './paper.js';
@@ -6,10 +6,11 @@ import { Paper } from './paper.js';
 export class Kid extends Actor {
     constructor(x, y) {
         super({
-            x, y, width: 10, height: 20,
+            x, y, width: 100, height: 200,
             collisionType: CollisionType.Passive,
         });
-        this.scale = new Vector(10, 10);
+
+        
 
     }
 
@@ -17,6 +18,10 @@ export class Kid extends Actor {
         this.graphics.use(Resources.Kid.toSprite());
         this.on('collisionstart', (event) => this.ballstouch(event));
         this.graphics.flipHorizontal = true;
+
+        this.collider.set(Shape.Box(this.width, this.height));
+
+
     }
 
     givePaper(){

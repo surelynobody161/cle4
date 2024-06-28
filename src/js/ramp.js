@@ -23,9 +23,9 @@ export class Ramp extends Actor {
 export class BoxC extends Actor {
     constructor(x, y, width, height) {
         super({
-            pos: new Vector(x, y),
+            pos: new Vector(x, y-75),
             width: width,
-            height: height,
+            height: height -150,
             collisionType: CollisionType.Fixed
         });
     }
